@@ -1,0 +1,61 @@
+package MercadoPago4D;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  RESTComponents,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon;
+
+contains
+  Mercadopago4D.Insight.DTO.QRCode in 'src\insight\dto\Mercadopago4D.Insight.DTO.QRCode.pas',
+  Mercadopago4D.Insight.DTO.Interfaces in 'src\insight\dto\Mercadopago4D.Insight.DTO.Interfaces.pas',
+  Mercadopago4D.Insight.DTO.Pedido in 'src\insight\dto\Mercadopago4D.Insight.DTO.Pedido.pas',
+  Mercadopago4D.Insight.DTO.Stores in 'src\insight\dto\Mercadopago4D.Insight.DTO.Stores.pas',
+  Pkg.Json.DTO in 'src\insight\dto\Pkg.Json.DTO.pas',
+  MercadoPago4D in 'src\MercadoPago4D.pas',
+  MercadoPago4D.Core.Credentials in 'src\core\MercadoPago4D.Core.Credentials.pas',
+  Mercadopago4D.Insight.DTO.UserTest in 'src\insight\dto\Mercadopago4D.Insight.DTO.UserTest.pas',
+  MercadoPago4D.Resources.CreateUser in 'src\resources\MercadoPago4D.Resources.CreateUser.pas',
+  MercadoPago4D.Core.Enviroment in 'src\core\MercadoPago4D.Core.Enviroment.pas',
+  MercadoPago4D.Core.Interfaces in 'src\core\MercadoPago4D.Core.Interfaces.pas',
+  MercadoPago4D.Resources.Manager in 'src\resources\MercadoPago4D.Resources.Manager.pas',
+  MercadoPago4D.Resources.Interfaces in 'src\resources\MercadoPago4D.Resources.Interfaces.pas',
+  MercadoPago4D.Core.HttpMethod in 'src\core\MercadoPago4D.Core.HttpMethod.pas',
+  MercadoPago4D.Resources.OAuthToken in 'src\resources\MercadoPago4D.Resources.OAuthToken.pas',
+  MercadoPago4D.Resources.RenewOAuthToken in 'src\resources\MercadoPago4D.Resources.RenewOAuthToken.pas',
+  MercadoPago4D.Resources.Store in 'src\resources\MercadoPago4D.Resources.Store.pas',
+  MercadoPago4D.Resources.QRCode in 'src\resources\MercadoPago4D.Resources.QRCode.pas',
+  MercadoPago4D.Resources.ChargeOrderQR in 'src\resources\MercadoPago4D.Resources.ChargeOrderQR.pas',
+  MercadoPago4D.Resources.AfterSales in 'src\resources\MercadoPago4D.Resources.AfterSales.pas',
+  MercadoPago4D.Resources.GenerateuserTest in 'src\resources\MercadoPago4D.Resources.GenerateuserTest.pas',
+  Mercadopago4D.Insight.DTO.BuilderStores in 'src\insight\dto\Mercadopago4D.Insight.DTO.BuilderStores.pas';
+
+end.
