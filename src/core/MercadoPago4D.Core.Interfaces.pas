@@ -8,6 +8,7 @@ uses
 type
   iMercadoPago4DConfiguration = interface;
   iMercadoPago4DResources = interface;
+  iMercadoPago4DManager = interface;
 
   iEnviroment = interface
     function Base_URL : String;
@@ -15,6 +16,7 @@ type
 
   iMercadoPago4D = interface
     function Configuration : iMercadoPago4DConfiguration;
+    function Manager : iMercadoPago4DManager;
   end;
 
   iMercadoPago4DConfiguration = interface
@@ -35,13 +37,7 @@ type
     function Store : iStore;
     function QRCode : iQRCode;
     function ChargeOrderQR : iChargeOrderQR;
-    function QueryAvailableQR : iQueryAvailableQR;
-    function DelOrderQR : iDelOrderQR;
-    function QueryMerchantOrder : iQueryMerchantOrder;
-    function SearchMerchantOrder : iSearchMerchantOrder;
-    function QueryPayment : iQueryPayment;
-    function SearchPayment : iSearchPayment;
-    function ReservalPayment : iReservalPayment;
+    function AfterSales : iAfterSales;
     function GenerateUserTest : iGenerateUserTest;
   end;
 

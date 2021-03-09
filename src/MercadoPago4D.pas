@@ -7,25 +7,25 @@ uses
 
 type
   TMercadoPago4D = class(TInterfacedObject, iMercadoPago4D)
-    private
-      FConfiguration : iConfiguration;
-    public
-      constructor Create;
-      destructor Destroy; override;
-      class function New : iMercadoPago4D;
-      function Configuration : iConfiguration;
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iMercadoPago4D;
+    function Configuration: iMercadoPago4DConfiguration;
+    function Manager : iMercadoPago4DManager;
   end;
 
 implementation
 
-function TMercadoPago4D.Configuration: iConfiguration;
+function TMercadoPago4D.Configuration: iMercadoPago4DConfiguration;
 begin
-  Result := FConfiguration;
+  Result := TMercadoPago4DConfiguration.New;
 end;
 
 constructor TMercadoPago4D.Create;
 begin
-//  FConfiguration := TMercadoPago4DConfiguration.New;
+
 end;
 
 destructor TMercadoPago4D.Destroy;
@@ -34,7 +34,12 @@ begin
   inherited;
 end;
 
-class function TMercadoPago4D.New : iMercadoPago4D;
+function TMercadoPago4D.Manager: iMercadoPago4DManager;
+begin
+  Result := TMercadoPago4DManager.New;
+end;
+
+class function TMercadoPago4D.New: iMercadoPago4D;
 begin
   Result := Self.Create;
 end;

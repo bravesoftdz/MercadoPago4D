@@ -9,6 +9,9 @@
         <Projects Include="sample\ExemploRAD\ExemploRAD.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="sample\PDV\PDV.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="ExemploRAD:Make">
         <MSBuild Projects="sample\ExemploRAD\ExemploRAD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="PDV">
+        <MSBuild Projects="sample\PDV\PDV.dproj"/>
+    </Target>
+    <Target Name="PDV:Clean">
+        <MSBuild Projects="sample\PDV\PDV.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PDV:Make">
+        <MSBuild Projects="sample\PDV\PDV.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="MercadoPago4D;ExemploRAD"/>
+        <CallTarget Targets="MercadoPago4D;ExemploRAD;PDV"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="MercadoPago4D:Clean;ExemploRAD:Clean"/>
+        <CallTarget Targets="MercadoPago4D:Clean;ExemploRAD:Clean;PDV:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="MercadoPago4D:Make;ExemploRAD:Make"/>
+        <CallTarget Targets="MercadoPago4D:Make;ExemploRAD:Make;PDV:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
