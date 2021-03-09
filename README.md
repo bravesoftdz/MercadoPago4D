@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/alepmedeiros/MercadoPago4D/blob/master/img/Mercado-Pago.png">
-    <img alt="Mercado Pago" height="150" src="https://github.com/alepmedeiros/MercadoPago4D/blob/master/img/Mercado-Pago.png">
+  <a href="https://github.com/alepmedeiros/MercadoPago4D/blob/master/img/logo.png">
+    <img alt="Mercado Pago" height="150" src="https://github.com/alepmedeiros/MercadoPago4D/blob/master/img/logo.png">
   </a>  
 </p><br>
 <p align="center">
