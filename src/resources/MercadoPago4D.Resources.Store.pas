@@ -3,38 +3,55 @@ unit MercadoPago4D.Resources.Store;
 interface
 
 uses
-  MercadoPago4D.Resources.Interfaces;
+  MercadoPago4D.Resources.Interfaces,
+  MercadoPago4D.Core.Interfaces,
+  RESTRequest4D,
+  System.SysUtils;
 
 type
   TStore = class(TInterfacedObject, iStore)
     private
-      FStoreId := String;
+      [weak]
+      FParent : iMercadoPago4DConfiguration;
     public
-      constructor Create;
+      constructor Create(Parent : iMercadoPago4DConfiguration);
       destructor Destroy; override;
-      class function New : iStore;
-      function CreateStore : iStore;
-      function UpdateStore : iStore;
-      function SearchStores : iStore;
-      function DelSotre : iStore;
-      function StoreId(Value : String) : iStore;
+      class function New(Parent : iMercadoPago4DConfiguration) : iStore;
+      function CreateStore(Builder : IInterface) : iStore;
+      function UpdateStore(Builder : IInterface) : iStore;
+      function SearchStores : String;
+      function DelSotre(Value : String) : iStore;
+      function GenerateQRCode(Builder : IInterface) : iStore;
+      function UpdateQRCode(Builder : IInterface; Value : String) : iStore;
+      function SearchQRs : String;
+      function SearchQRExternalID(Value : String) : String;
+      function DelQRCode(Value : String) : iStore;
+      function &End : iStore;
   end;
 
 implementation
 
-constructor TStore.Create;
+
+{ TStore }
+
+constructor TStore.Create(Parent: iMercadoPago4DConfiguration);
 begin
 
 end;
 
-function TStore.CreateStore: iStore;
+function TStore.CreateStore(Builder: IInterface): iStore;
 begin
-  Result := Self;
+
 end;
 
-function TStore.DelSotre: iStore;
+function TStore.DelQRCode(Value: String): iStore;
 begin
-  Result := Self;
+
+end;
+
+function TStore.DelSotre(Value: String): iStore;
+begin
+
 end;
 
 destructor TStore.Destroy;
@@ -43,25 +60,44 @@ begin
   inherited;
 end;
 
-class function TStore.New : iStore;
+function TStore.&End: iStore;
 begin
-  Result := Self.Create;
+
 end;
 
-function TStore.SearchStores: iStore;
+function TStore.GenerateQRCode(Builder: IInterface): iStore;
 begin
-  Result := Self;
+
 end;
 
-function TStore.StoreId(Value: String): iStore;
+class function TStore.New(Parent: iMercadoPago4DConfiguration): iStore;
 begin
-  Result := Self;
-  FStoreId := Value;
+
 end;
 
-function TStore.UpdateStore: iStore;
+function TStore.SearchQRExternalID(Value: String): String;
 begin
-  Result := Self;
+
+end;
+
+function TStore.SearchQRs: String;
+begin
+
+end;
+
+function TStore.SearchStores: String;
+begin
+
+end;
+
+function TStore.UpdateQRCode(Builder: IInterface; Value: String): iStore;
+begin
+
+end;
+
+function TStore.UpdateStore(Builder: IInterface): iStore;
+begin
+
 end;
 
 end.

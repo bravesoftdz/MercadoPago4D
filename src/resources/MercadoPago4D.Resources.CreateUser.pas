@@ -9,36 +9,46 @@ uses
   System.Classes,
   System.JSON,
   REST.Json,
-  System.SysUtils;
+  System.SysUtils,
+  MercadoPago4D.Core.Interfaces;
 
 type
-  TCreateUser = class(TInterfacedObject, iCreateUser)
+  TCreateUser = class(TInterfacedObject, iGenerateUserTest)
     private
-
       FUser : TUserTest;
+      FEnv : iEnviroment;
     public
       constructor Create;
       destructor Destroy; override;
-      class function New : iCreateUser;
-      function ListaInfo : String;
-      function CreateUser : iCreateUser;
+      class function New : iGenerateUserTest;
+      function Generate : iGenerateUserTest;
+      function Content : String;
   end;
 
 implementation
 
+uses
+  MercadoPago4D.Core.Enviroment;
+
+function TCreateUser.Content: String;
+begin
+  Result := FUser.ToString;
+end;
+
 constructor TCreateUser.Create;
 begin
   FUser := TUserTest.Create;
+  FEnv := TEnviroment.New;
 end;
 
-function TCreateUser.CreateUser: iCreateUser;
+function TCreateUser.Generate: iGenerateUserTest;
 var
   json : Tjsonobject;
 begin
   Result := Self;
   FUser := TJSON.JsonToObject<TUserTest>(
     TRequest.New
-      .BaseURL('/users/test_user')
+      .BaseURL(FEnv.Base_URL + '/users/test_user')
       .Accept('application/json')
       .AddBody('{"site_id":"MLB"}')
       .Post.Content);
@@ -50,22 +60,7 @@ begin
   inherited;
 end;
 
-function TCreateUser.ListaInfo: String;
-var
-  Lista : TStringList;
-begin
-  Lista := TStringList.Create;
-  try
-    Lista.Add('ID: ' + FUser.Id.ToString);
-    Lista.Add('Email: ' + FUser.Email);
-    Lista.Add('Password: ' + FUser.Password);
-    Result := Lista.Text;
-  finally
-    Lista.Free;
-  end;
-end;
-
-class function TCreateUser.New : iCreateUser;
+class function TCreateUser.New : iGenerateUserTest;
 begin
   Result := Self.Create;
 end;

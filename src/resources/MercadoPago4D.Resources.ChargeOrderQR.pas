@@ -3,11 +3,14 @@ unit MercadoPago4D.Resources.ChargeOrderQR;
 interface
 
 uses
-  MercadoPago4D.Resources.Interfaces;
+  MercadoPago4D.Resources.Interfaces,
+  MercadoPago4D.Core.Interfaces;
 
 type
   TChargeOrderQR = class(TInterfacedObject, iChargeOrderQR)
     private
+      [weak]
+      FParent : iMercadoPago4DConfiguration;
       FExternalId : String;
       FPosId : String;
       FOrderId : String;
@@ -15,9 +18,9 @@ type
       FDateCreatedFrom : TDateTime;
       FDateCreatedTo : TDateTime;
     public
-      constructor Create;
+      constructor Create(Parent : iMercadoPago4DConfiguration);
       destructor Destroy; override;
-      class function New : iChargeOrderQR;
+      class function New(Parent : iMercadoPago4DConfiguration) : iChargeOrderQR;
       function LoadOrderQR : iChargeOrderQR;
       function CheckAvailability : iChargeOrderQR;
       function DelOrder : iChargeOrderQR;
@@ -43,9 +46,9 @@ begin
   Result := Self;
 end;
 
-constructor TChargeOrderQR.Create;
+constructor TChargeOrderQR.Create(Parent : iMercadoPago4DConfiguration);
 begin
-
+  FParent := Parent;
 end;
 
 function TChargeOrderQR.DateCreatedFrom(Value: TDateTime): iChargeOrderQR;
@@ -88,9 +91,9 @@ begin
   Result := Self;
 end;
 
-class function TChargeOrderQR.New : iChargeOrderQR;
+class function TChargeOrderQR.New (Parent : iMercadoPago4DConfiguration) : iChargeOrderQR;
 begin
-  Result := Self.Create;
+  Result := Self.Create(Parent);
 end;
 
 function TChargeOrderQR.OrderId(Value: String): iChargeOrderQR;

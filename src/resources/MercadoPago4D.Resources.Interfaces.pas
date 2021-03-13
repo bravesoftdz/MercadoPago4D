@@ -19,11 +19,16 @@ type
   end;
 
   iStore = interface
-    function CreateStore : iStore;
-    function UpdateStore : iStore;
-    function SearchStores : iStore;
-    function DelSotre : iStore;
-    function StoreId(Value : String) : iStore;
+    function CreateStore(Builder : IInterface) : iStore;
+    function UpdateStore(Builder : IInterface) : iStore;
+    function SearchStores : String;
+    function DelSotre(Value : String) : iStore;
+    function GenerateQRCode(Builder : IInterface) : iStore;
+    function UpdateQRCode(Builder : IInterface; Value : String) : iStore;
+    function SearchQRs : String;
+    function SearchQRExternalID(Value : String) : String;
+    function DelQRCode(Value : String) : iStore;
+    function &End : iStore;
   end;
 
   iQRCode = interface
@@ -87,7 +92,8 @@ type
 
   //Generate test user
   iGenerateUserTest = interface
-    function Generate : iGenerateUserTest;
+    function Generate(AccesToken : String) : iGenerateUserTest;
+    function Content : String;
   end;
 
 implementation

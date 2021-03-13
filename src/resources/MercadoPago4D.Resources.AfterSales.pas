@@ -3,11 +3,14 @@ unit MercadoPago4D.Resources.AfterSales;
 interface
 
 uses
-  MercadoPago4D.Resources.Interfaces;
+  MercadoPago4D.Resources.Interfaces,
+  MercadoPago4D.Core.Interfaces;
 
 type
   TAfterSales = class(TInterfacedObject, iAfterSales)
     private
+      [Weak]
+      FParent : iMercadoPago4DConfiguration;
       FPaymentId : String;
       FExternalReference : String;
       FPosId : String;
@@ -31,9 +34,9 @@ type
       FCriteria : String;
       FSort : String;
     public
-      constructor Create;
+      constructor Create(Parent : iMercadoPago4DConfiguration);
       destructor Destroy; override;
-      class function New : iAfterSales;
+      class function New(Parent : iMercadoPago4DConfiguration) : iAfterSales;
       function ConsultPayment : iAfterSales;
       function SeekPayment : iAfterSales;
       function ReversalPayment : iAfterSales;
@@ -99,9 +102,9 @@ begin
   Result := Self;
 end;
 
-constructor TAfterSales.Create;
+constructor TAfterSales.Create(Parent : iMercadoPago4DConfiguration);
 begin
-
+  FParent := Parent;
 end;
 
 function TAfterSales.Criteria(Value: String): iAfterSales;
@@ -140,9 +143,9 @@ begin
   FLimit := Value;
 end;
 
-class function TAfterSales.New : iAfterSales;
+class function TAfterSales.New (Parent : iMercadoPago4DConfiguration) : iAfterSales;
 begin
-  Result := Self.Create;
+  Result := Self.Create(Parent);
 end;
 
 function TAfterSales.Offset(Value: Integer): iAfterSales;

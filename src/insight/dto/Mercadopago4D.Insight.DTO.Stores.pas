@@ -3,7 +3,9 @@ unit Mercadopago4D.Insight.DTO.Stores;
 interface
 
 uses
-  Pkg.Json.DTO, System.Generics.Collections, REST.Json.Types;
+  Pkg.Json.DTO,
+  System.Generics.Collections,
+  REST.Json.Types;
 
 {$M+}
 
@@ -16,7 +18,7 @@ type
     FReference: string;
     FState_name: string;
     FStreet_name: string;
-    FStreet_number: Boolean;
+    FStreet_number: String;
     FZip_Code: string;
   published
     property City_name: string read FCity_name write FCity_name;
@@ -25,7 +27,7 @@ type
     property Reference: string read FReference write FReference;
     property State_name: string read FState_name write FState_name;
     property Street_name: string read FStreet_name write FStreet_name;
-    property Street_number: Boolean read FStreet_number write FStreet_number;
+    property Street_number: String read FStreet_number write FStreet_number;
     property Zip_code: string read FZip_code write FZip_code;
   end;
   
@@ -126,7 +128,7 @@ type
     destructor Destroy; override;
   end;
   
-  TRootDTO = class(TJsonDTO)
+  TStoresDTO = class(TJsonDTO)
   private
     FBusiness_hours: TBusiness_hoursDTO;
     FExternal_id: string;
@@ -141,7 +143,7 @@ type
     constructor Create; override;
     destructor Destroy; override;
   end;
-  
+
 implementation
 
 { TBusiness_HoursDTO }
@@ -214,16 +216,16 @@ begin
   Result := FSunday;
 end;
 
-{ TRootDTO }
+{ TStoresDTO }
 
-constructor TRootDTO.Create;
+constructor TStoresDTO.Create;
 begin
   inherited;
   FBusiness_hours := TBusiness_hoursDTO.Create;
   FLocation := TLocationDTO.Create;
 end;
 
-destructor TRootDTO.Destroy;
+destructor TStoresDTO.Destroy;
 begin
   FBusiness_Hours.Free;
   FLocation.Free;

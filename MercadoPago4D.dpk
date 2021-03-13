@@ -36,14 +36,11 @@ requires
 
 contains
   Mercadopago4D.Insight.DTO.QRCode in 'src\insight\dto\Mercadopago4D.Insight.DTO.QRCode.pas',
-  Mercadopago4D.Insight.DTO.Interfaces in 'src\insight\dto\Mercadopago4D.Insight.DTO.Interfaces.pas',
   Mercadopago4D.Insight.DTO.Pedido in 'src\insight\dto\Mercadopago4D.Insight.DTO.Pedido.pas',
   Mercadopago4D.Insight.DTO.Stores in 'src\insight\dto\Mercadopago4D.Insight.DTO.Stores.pas',
   Pkg.Json.DTO in 'src\insight\dto\Pkg.Json.DTO.pas',
   MercadoPago4D in 'src\MercadoPago4D.pas',
-  MercadoPago4D.Core.Credentials in 'src\core\MercadoPago4D.Core.Credentials.pas',
   Mercadopago4D.Insight.DTO.UserTest in 'src\insight\dto\Mercadopago4D.Insight.DTO.UserTest.pas',
-  MercadoPago4D.Resources.CreateUser in 'src\resources\MercadoPago4D.Resources.CreateUser.pas',
   MercadoPago4D.Core.Enviroment in 'src\core\MercadoPago4D.Core.Enviroment.pas',
   MercadoPago4D.Core.Interfaces in 'src\core\MercadoPago4D.Core.Interfaces.pas',
   MercadoPago4D.Resources.Manager in 'src\resources\MercadoPago4D.Resources.Manager.pas',
@@ -56,6 +53,19 @@ contains
   MercadoPago4D.Resources.ChargeOrderQR in 'src\resources\MercadoPago4D.Resources.ChargeOrderQR.pas',
   MercadoPago4D.Resources.AfterSales in 'src\resources\MercadoPago4D.Resources.AfterSales.pas',
   MercadoPago4D.Resources.GenerateuserTest in 'src\resources\MercadoPago4D.Resources.GenerateuserTest.pas',
-  Mercadopago4D.Insight.DTO.BuilderStores in 'src\insight\dto\Mercadopago4D.Insight.DTO.BuilderStores.pas';
+  MercadoPago4D.Core.Configuration in 'src\core\MercadoPago4D.Core.Configuration.pas',
+  MercadoPago4D.Resources in 'src\resources\MercadoPago4D.Resources.pas',
+  Mercadopago4D.Insight.Builder.Stores in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Stores.pas',
+  Mercadopago4D.Insight.Builder.Interfaces in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Interfaces.pas',
+  Mercadopago4D.Insight.Builder.Manager in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Manager.pas',
+  Mercadopago4D.Insight.Builder.Location in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Location.pas',
+  Mercadopago4D.Insight.Builder.Sunday in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Sunday.pas',
+  Mercadopago4D.Insight.Builder.Saturday in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Saturday.pas',
+  Mercadopago4D.Insight.Builder.Friday in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Friday.pas',
+  Mercadopago4D.Insight.Builder.Thursday in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Thursday.pas',
+  Mercadopago4D.Insight.Builder.Wednesday in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Wednesday.pas',
+  Mercadopago4D.Insight.Builder.Tuesday in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Tuesday.pas',
+  Mercadopago4D.Insight.Builder.Monday in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Monday.pas',
+  Mercadopago4D.Insight.Builder.Business_Hours in 'src\insight\Builder\Mercadopago4D.Insight.Builder.Business_Hours.pas';
 
 end.

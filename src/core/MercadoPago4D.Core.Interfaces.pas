@@ -3,7 +3,7 @@ unit MercadoPago4D.Core.Interfaces;
 interface
 
 uses
-  MercadoPago4D.Resources.Interfaces;
+  MercadoPago4D.Resources.Interfaces, Mercadopago4D.Insight.Builder.Interfaces;
 
 type
   iMercadoPago4DConfiguration = interface;
@@ -20,15 +20,16 @@ type
   end;
 
   iMercadoPago4DConfiguration = interface
-    function ClientID(Value : String) : iMercadoPago4DConfiguration;
-    function ClientScret(Value : String) : iMercadoPago4DConfiguration;
-    function AccessToken : String;
-    function ExpiresIN : Integer;
-    function UserID : Integer;
+    function AccessToken(Value : String) : iMercadoPago4DConfiguration; overload;
+    function AccessToken : String; overload;
+    function ClientID(Value : Integer) : iMercadoPago4DConfiguration; overload;
+    function ClientID : Integer; overload;
+    function Enviroment : iEnviroment;
   end;
 
   iMercadoPago4DManager = interface
     function Resources : iMercadoPago4DResources;
+    function Builder : iManagerBuilder;
   end;
 
   iMercadoPago4DResources = interface

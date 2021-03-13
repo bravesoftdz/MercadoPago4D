@@ -12,6 +12,9 @@
         <Projects Include="sample\PDV\PDV.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="sample\ExemploUsoFramework\MercadoPago4DClient.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +50,23 @@
     <Target Name="PDV:Make">
         <MSBuild Projects="sample\PDV\PDV.dproj" Targets="Make"/>
     </Target>
+    <Target Name="MercadoPago4DClient">
+        <MSBuild Projects="sample\ExemploUsoFramework\MercadoPago4DClient.dproj"/>
+    </Target>
+    <Target Name="MercadoPago4DClient:Clean">
+        <MSBuild Projects="sample\ExemploUsoFramework\MercadoPago4DClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MercadoPago4DClient:Make">
+        <MSBuild Projects="sample\ExemploUsoFramework\MercadoPago4DClient.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="MercadoPago4D;ExemploRAD;PDV"/>
+        <CallTarget Targets="MercadoPago4D;ExemploRAD;PDV;MercadoPago4DClient"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="MercadoPago4D:Clean;ExemploRAD:Clean;PDV:Clean"/>
+        <CallTarget Targets="MercadoPago4D:Clean;ExemploRAD:Clean;PDV:Clean;MercadoPago4DClient:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="MercadoPago4D:Make;ExemploRAD:Make;PDV:Make"/>
+        <CallTarget Targets="MercadoPago4D:Make;ExemploRAD:Make;PDV:Make;MercadoPago4DClient:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
