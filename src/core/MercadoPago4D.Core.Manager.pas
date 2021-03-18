@@ -6,39 +6,41 @@ uses
   MercadoPago4D.Core.Interfaces;
 
 type
-  TMercadoPago4DManager = class(TInterfacedObject, iMercadoPago4DManager)
+  TMercadoPago4DManger = class(TInterfacedObject, iMercadoPago4DManger)
     private
+      [weak]
+      FParent : iMercadoPago4DConfiguration;
     public
-      constructor Create;
+      constructor Create(Parent : iMercadoPago4DConfiguration);
       destructor Destroy; override;
-      class function New : iMercadoPago4DManager;
-      function Resources : iMercadoPago4DResources;
+      class function New(Parent : iMercadoPago4DConfiguration) : iMercadoPago4DManger;
+      function Reources : iMercadoPago4DResources;
   end;
 
 implementation
 
 uses
-  MercadoPago4D.Resources;
+  MercadoPago4D.Core.Configuration, MercadoPago4D.Services.Resources;
 
-constructor TMercadoPago4DManager.Create;
+constructor TMercadoPago4DManger.Create(Parent : iMercadoPago4DConfiguration);
 begin
-
+  FParent := Parent;
 end;
 
-destructor TMercadoPago4DManager.Destroy;
+destructor TMercadoPago4DManger.Destroy;
 begin
 
   inherited;
 end;
 
-class function TMercadoPago4DManager.New : iMercadoPago4DManager;
+class function TMercadoPago4DManger.New (Parent : iMercadoPago4DConfiguration) : iMercadoPago4DManger;
 begin
-  Result := Self.Create;
+  Result := Self.Create(Parent);
 end;
 
-function TMercadoPago4DManager.Resources: iMercadoPago4DResources;
+function TMercadoPago4DManger.Reources: iMercadoPago4DResources;
 begin
-  Result := TMercadoPago4DResources.New();
+  Result := TMercadoPago4DResources.New(FParent);
 end;
 
 end.

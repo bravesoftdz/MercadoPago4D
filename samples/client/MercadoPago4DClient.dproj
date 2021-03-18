@@ -1,40 +1,25 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{DC0AABDE-19A2-432B-B54D-63751347F46F}</ProjectGuid>
-        <MainSource>MercadoPago4D.dpk</MainSource>
+        <ProjectGuid>{7889AA63-BF9E-44E8-9109-061886E84F48}</ProjectGuid>
         <ProjectVersion>19.2</ProjectVersion>
-        <FrameworkType>None</FrameworkType>
+        <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
-        <AppType>Package</AppType>
+        <AppType>Application</AppType>
+        <MainSource>MercadoPago4DClient.dpr</MainSource>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Android' and '$(Base)'=='true') or '$(Base_Android)'!=''">
-        <Base_Android>true</Base_Android>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Android64' and '$(Base)'=='true') or '$(Base_Android64)'!=''">
-        <Base_Android64>true</Base_Android64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='iOSDevice64' and '$(Base)'=='true') or '$(Base_iOSDevice64)'!=''">
-        <Base_iOSDevice64>true</Base_iOSDevice64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='iOSSimulator' and '$(Base)'=='true') or '$(Base_iOSSimulator)'!=''">
-        <Base_iOSSimulator>true</Base_iOSSimulator>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -54,6 +39,12 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
@@ -62,32 +53,23 @@
         <DCC_S>false</DCC_S>
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
-        <GenDll>true</GenDll>
-        <GenPackage>true</GenPackage>
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
-        <SanitizedProjectName>MercadoPago4D</SanitizedProjectName>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Android)'!=''">
-        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
-        <EnabledSysJars>android-support-v4.dex.jar;cloud-messaging.dex.jar;com-google-android-gms.play-services-ads-base.17.2.0.dex.jar;com-google-android-gms.play-services-ads-identifier.16.0.0.dex.jar;com-google-android-gms.play-services-ads-lite.17.2.0.dex.jar;com-google-android-gms.play-services-ads.17.2.0.dex.jar;com-google-android-gms.play-services-analytics-impl.16.0.8.dex.jar;com-google-android-gms.play-services-analytics.16.0.8.dex.jar;com-google-android-gms.play-services-base.16.0.1.dex.jar;com-google-android-gms.play-services-basement.16.2.0.dex.jar;com-google-android-gms.play-services-gass.17.2.0.dex.jar;com-google-android-gms.play-services-identity.16.0.0.dex.jar;com-google-android-gms.play-services-maps.16.1.0.dex.jar;com-google-android-gms.play-services-measurement-base.16.4.0.dex.jar;com-google-android-gms.play-services-measurement-sdk-api.16.4.0.dex.jar;com-google-android-gms.play-services-stats.16.0.1.dex.jar;com-google-android-gms.play-services-tagmanager-v4-impl.16.0.8.dex.jar;com-google-android-gms.play-services-tasks.16.0.1.dex.jar;com-google-android-gms.play-services-wallet.16.0.1.dex.jar;com-google-firebase.firebase-analytics.16.4.0.dex.jar;com-google-firebase.firebase-common.16.1.0.dex.jar;com-google-firebase.firebase-iid-interop.16.0.1.dex.jar;com-google-firebase.firebase-iid.17.1.1.dex.jar;com-google-firebase.firebase-measurement-connector.17.0.1.dex.jar;com-google-firebase.firebase-messaging.17.5.0.dex.jar;fmx.dex.jar;google-play-billing.dex.jar;google-play-licensing.dex.jar</EnabledSysJars>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Android64)'!=''">
-        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
-        <EnabledSysJars>android-support-v4.dex.jar;cloud-messaging.dex.jar;com-google-android-gms.play-services-ads-base.17.2.0.dex.jar;com-google-android-gms.play-services-ads-identifier.16.0.0.dex.jar;com-google-android-gms.play-services-ads-lite.17.2.0.dex.jar;com-google-android-gms.play-services-ads.17.2.0.dex.jar;com-google-android-gms.play-services-analytics-impl.16.0.8.dex.jar;com-google-android-gms.play-services-analytics.16.0.8.dex.jar;com-google-android-gms.play-services-base.16.0.1.dex.jar;com-google-android-gms.play-services-basement.16.2.0.dex.jar;com-google-android-gms.play-services-gass.17.2.0.dex.jar;com-google-android-gms.play-services-identity.16.0.0.dex.jar;com-google-android-gms.play-services-maps.16.1.0.dex.jar;com-google-android-gms.play-services-measurement-base.16.4.0.dex.jar;com-google-android-gms.play-services-measurement-sdk-api.16.4.0.dex.jar;com-google-android-gms.play-services-stats.16.0.1.dex.jar;com-google-android-gms.play-services-tagmanager-v4-impl.16.0.8.dex.jar;com-google-android-gms.play-services-tasks.16.0.1.dex.jar;com-google-android-gms.play-services-wallet.16.0.1.dex.jar;com-google-firebase.firebase-analytics.16.4.0.dex.jar;com-google-firebase.firebase-common.16.1.0.dex.jar;com-google-firebase.firebase-iid-interop.16.0.1.dex.jar;com-google-firebase.firebase-iid.17.1.1.dex.jar;com-google-firebase.firebase-measurement-connector.17.0.1.dex.jar;com-google-firebase.firebase-messaging.17.5.0.dex.jar;fmx.dex.jar;google-play-billing.dex.jar;google-play-licensing.dex.jar</EnabledSysJars>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_iOSDevice64)'!=''">
-        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_iOSSimulator)'!=''">
-        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+        <SanitizedProjectName>MercadoPago4DClient</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_UsePackage>DBXSqliteDriver;DBXDb2Driver;vclactnband;vclFireDAC;tethering;FireDACADSDriver;ACBr_BPeDabpeESCPOS;JvPluginSystem;ACBr_BPe;cxLibraryRS27;dxRibbonCustomizationFormRS27;FireDACMSSQLDriver;vcltouch;JvBands;ACBr_NFe;vcldb;svn;JvJans;dxPScxExtCommonRS27;ACBr_NFeDanfeESCPOS;cxTreeListRS27;dxPScxSchedulerLnkRS27;JvDotNetCtrls;vclib;dxRichEditDocumentModelRS27;dxPsPrVwAdvRS27;FireDACDBXDriver;vclx;dxPSdxFCLnkRS27;dxSpellCheckerRS27;ACBr_SATExtratoRL;dxPDFViewerRS27;RESTBackendComponents;ACBr_Reinf;VCLRESTComponents;dxWizardControlRS27;cxSchedulerTreeBrowserRS27;vclie;bindengine;CloudService;dxBarExtDBItemsRS27;JvHMI;FireDACMySQLDriver;ACBr_PAF;ACBr_SATECFVirtual;cxExportRS27;DataSnapClient;cxSchedulerWebServiceStorageRS27;bindcompdbx;ACBr_CTeDacteRL;ACBr_TCP;DBXSybaseASEDriver;IndyIPServer;ACBr_CTe;dxPScxPCProdRS27;IndySystem;dxHttpIndyRequestRS27;bindcompvclwinx;ACBr_PagFor;dsnapcon;dxFlowChartRS27;ACBre_Social;FireDACMSAccDriver;FireDACInfxDriver;fmxFireDAC;vclimg;ACBr_SPEDImportar;Jcl;dxmdsRS27;dxPSPrVwRibbonRS27;ACBr_SPED;ACBr_MDFe;emshosting;dxCoreRS27;ACBr_BoletoRL;ACBr_LFD;DBXOdbcDriver;FireDACTDataDriver;FMXTee;cxSchedulerRibbonStyleEventEditorRS27;soaprtl;DbxCommonDriver;ACBr_CIOT;dxRichEditCoreRS27;JvManagedThreads;ACBr_NFSeDanfseRL;dxCloudServiceLibraryRS27;xmlrtl;DataSnapNativeClient;soapmidas;fmxobj;JvTimeFramework;rtl;emsserverresource;DbxClientDriver;dxdborRS27;DBXSybaseASADriver;dxdbtrRS27;JvSystem;JvStdCtrls;ACBr_Convenio115;dxPSDBTeeChartRS27;appanalytics;dxSpreadSheetCoreRS27;dxRichEditControlCoreRS27;dxGDIPlusRS27;IndyIPClient;dxFireDACServerModeRS27;dxFlowChartAdvancedCustomizeFormRS27;bindcompvcl;dxServerModeRS27;TeeUI;dxPSLnksRS27;dxorgcRS27;JvDocking;JvPascalInterpreter;VclSmp;dxDBXServerModeRS27;FireDACODBCDriver;JclVcl;DataSnapIndy10ServerTransport;ACBr_Boleto;cxGridRS27;DataSnapProviderClient;ACBr_SEF2;FireDACMongoDBDriver;JvControls;dxFireDACEMFRS27;JvPrintPreview;ACBr_NFSe;dxtrmdRS27;DataSnapServerMidas;RESTComponents;dxSpreadSheetCoreConditionalFormattingDialogsRS27;DBXInterBaseDriver;dxSpreadSheetConditionalFormattingDialogsRS27;ACBr_NF3e;ACBr_TEFD;dxSpreadSheetReportDesignerRS27;dxGaugeControlRS27;dxSpreadSheetRS27;bindcompvclsmp;emsclientfiredac;DataSnapFireDAC;svnui;JvGlobus;ACBr_SATWS;dxBarDBNavRS27;dxPSRichEditControlLnkRS27;cxPivotGridOLAPRS27;DBXMSSQLDriver;JvMM;ACBr_MDFeDamdfeRL;dxADOServerModeRS27;DatasnapConnectorsFreePascal;cxPivotGridRS27;ACBr_EDI;ACBr_ONE;bindcompfmx;JvNet;DBXOracleDriver;inetdb;JvAppFrm;ACBr_Diversos;dxFlowChartDesignerRS27;FmxTeeUI;emsedge;ACBr_LCDPR;FireDACIBDriver;fmx;fmxdae;vcledge;JvWizards;ACBr_Ponto;dbexpress;IndyCore;dxRibbonRS27;dxOrgChartAdvancedCustomizeFormRS27;JvPageComps;dsnap;DataSnapCommon;emsclient;FireDACCommon;JvDB;dxTileControlRS27;cxSchedulerRS27;DataSnapConnectors;dxBarExtItemsRS27;cxGridEMFRS27;ACBR_DeSTDA;soapserver;ACBr_SAT;JclDeveloperTools;dxRichEditControlRS27;dxPScxTLLnkRS27;FireDACOracleDriver;DBXMySQLDriver;JvCmp;dxPSCoreRS27;dxFlowChartLayoutsRS27;DBXFirebirdDriver;dxADOEMFRS27;ACBr_Sintegra;FireDACCommonODBC;FireDACCommonDriver;ACBr_GNRE;ACBr_ADRCST;dxPScxPivotGridLnkRS27;inet;cxPivotGridChartRS27;IndyIPCommon;JvCustom;dxPSdxOCLnkRS27;vcl;ACBr_NFeDanfeRL;JvXPCtrls;ACBr_SATExtratoESCPOS;FireDACDb2Driver;dxPSdxDBOCLnkRS27;ACBr_Integrador;dxMapControlRS27;dxComnRS27;dxPSdxGaugeControlLnkRS27;dxEMFRS27;TeeDB;FireDAC;cxTreeListdxBarPopupMenuRS27;dxPScxVGridLnkRS27;JvCore;dxPSdxPDFViewerLnkRS27;ACBr_Comum;dxPSdxSpreadSheetLnkRS27;JvCrypt;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;ACBr_GNREGuiaRL;JvDlgs;JvRuntimeDesign;dxTabbedMDIRS27;dxGanttControlRS27;ibxpress;Tee;DataSnapServer;ibxbindings;FireDACDSDriver;vclwinx;ACBr_OpenSSL;dxPScxCommonRS27;CustomIPTransport;vcldsnap;dxPSTeeChartRS27;dxSkinsCoreRS27;dxPScxGridLnkRS27;bindcomp;ACBr_Serial;DBXInformixDriver;cxSchedulerGridRS27;cxVerticalGridRS27;frce;dxDockingRS27;dxNavBarRS27;ACBr_BlocoX;dbxcds;ACBr_NFCeECFVirtual;adortl;ACBr_ANe;dsnapxml;dbrtl;IndyProtocols;inetdbxpress;dxBarRS27;dxPSdxLCLnkRS27;dxPSdxMapControlLnkRS27;JclContainers;ACBr_NF3eDANF3eESCPOS;ACBr_MTER;dxPSdxDBTVLnkRS27;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <DCC_UsePackage>DBXSqliteDriver;DBXDb2Driver;vclactnband;vclFireDAC;tethering;FireDACADSDriver;cxLibraryRS27;dxRibbonCustomizationFormRS27;FireDACMSSQLDriver;vcltouch;vcldb;dxPScxExtCommonRS27;cxTreeListRS27;dxPScxSchedulerLnkRS27;vclib;dxRichEditDocumentModelRS27;dxPsPrVwAdvRS27;FireDACDBXDriver;vclx;dxPSdxFCLnkRS27;dxSpellCheckerRS27;dxPDFViewerRS27;RESTBackendComponents;VCLRESTComponents;dxWizardControlRS27;cxSchedulerTreeBrowserRS27;vclie;bindengine;CloudService;dxBarExtDBItemsRS27;FireDACMySQLDriver;cxExportRS27;DataSnapClient;cxSchedulerWebServiceStorageRS27;bindcompdbx;DBXSybaseASEDriver;IndyIPServer;dxPScxPCProdRS27;IndySystem;dxHttpIndyRequestRS27;bindcompvclwinx;dsnapcon;dxFlowChartRS27;FireDACMSAccDriver;FireDACInfxDriver;fmxFireDAC;vclimg;dxmdsRS27;dxPSPrVwRibbonRS27;emshosting;dxCoreRS27;DBXOdbcDriver;FireDACTDataDriver;FMXTee;cxSchedulerRibbonStyleEventEditorRS27;soaprtl;DbxCommonDriver;dxRichEditCoreRS27;dxCloudServiceLibraryRS27;xmlrtl;DataSnapNativeClient;soapmidas;fmxobj;rtl;emsserverresource;DbxClientDriver;dxdborRS27;DBXSybaseASADriver;dxdbtrRS27;dxPSDBTeeChartRS27;appanalytics;dxSpreadSheetCoreRS27;dxRichEditControlCoreRS27;dxGDIPlusRS27;IndyIPClient;dxFireDACServerModeRS27;dxFlowChartAdvancedCustomizeFormRS27;bindcompvcl;dxServerModeRS27;TeeUI;dxPSLnksRS27;dxorgcRS27;VclSmp;dxDBXServerModeRS27;FireDACODBCDriver;DataSnapIndy10ServerTransport;cxGridRS27;DataSnapProviderClient;FireDACMongoDBDriver;dxFireDACEMFRS27;dxtrmdRS27;DataSnapServerMidas;RESTComponents;dxSpreadSheetCoreConditionalFormattingDialogsRS27;DBXInterBaseDriver;dxSpreadSheetConditionalFormattingDialogsRS27;dxSpreadSheetReportDesignerRS27;dxGaugeControlRS27;dxSpreadSheetRS27;bindcompvclsmp;emsclientfiredac;DataSnapFireDAC;dxBarDBNavRS27;dxPSRichEditControlLnkRS27;cxPivotGridOLAPRS27;DBXMSSQLDriver;dxADOServerModeRS27;DatasnapConnectorsFreePascal;cxPivotGridRS27;bindcompfmx;DBXOracleDriver;inetdb;dxFlowChartDesignerRS27;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;vcledge;dbexpress;IndyCore;dxRibbonRS27;dxOrgChartAdvancedCustomizeFormRS27;dsnap;DataSnapCommon;emsclient;FireDACCommon;dxTileControlRS27;cxSchedulerRS27;DataSnapConnectors;dxBarExtItemsRS27;cxGridEMFRS27;soapserver;dxRichEditControlRS27;dxPScxTLLnkRS27;FireDACOracleDriver;DBXMySQLDriver;dxPSCoreRS27;dxFlowChartLayoutsRS27;DBXFirebirdDriver;dxADOEMFRS27;FireDACCommonODBC;FireDACCommonDriver;dxPScxPivotGridLnkRS27;inet;cxPivotGridChartRS27;IndyIPCommon;dxPSdxOCLnkRS27;vcl;FireDACDb2Driver;dxPSdxDBOCLnkRS27;dxMapControlRS27;dxComnRS27;dxPSdxGaugeControlLnkRS27;dxEMFRS27;TeeDB;FireDAC;cxTreeListdxBarPopupMenuRS27;dxPScxVGridLnkRS27;dxPSdxPDFViewerLnkRS27;dxPSdxSpreadSheetLnkRS27;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;dxTabbedMDIRS27;dxGanttControlRS27;ibxpress;Tee;DataSnapServer;ibxbindings;FireDACDSDriver;vclwinx;dxPScxCommonRS27;CustomIPTransport;vcldsnap;dxPSTeeChartRS27;dxSkinsCoreRS27;dxPScxGridLnkRS27;bindcomp;DBXInformixDriver;cxSchedulerGridRS27;cxVerticalGridRS27;dxDockingRS27;dxNavBarRS27;dbxcds;adortl;dsnapxml;dbrtl;IndyProtocols;inetdbxpress;dxBarRS27;dxPSdxLCLnkRS27;dxPSdxMapControlLnkRS27;dxPSdxDBTVLnkRS27;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -99,6 +81,9 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <BRCC_IncludePath>C:\ProjetosExemplo\MercadoPago4Dv2;C:\ProjetosExemplo\MercadoPago4Dv2\src\core;C:\ProjetosExemplo\MercadoPago4Dv2\src\dto;C:\ProjetosExemplo\MercadoPago4Dv2\src\dto\builder;C:\ProjetosExemplo\MercadoPago4Dv2\src\services;C:\ProjetosExemplo\MercadoPago4Dv2\src\services\accreditation;$(BRCC_IncludePath)</BRCC_IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
@@ -108,35 +93,19 @@
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+    </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="MercadoPago4D.pas"/>
-        <DCCReference Include="src\core\MercadoPago4D.Core.Interfaces.pas"/>
-        <DCCReference Include="src\core\MercadoPago4D.Core.Manager.pas"/>
-        <DCCReference Include="src\core\MercadoPago4D.Core.Configuration.pas"/>
-        <DCCReference Include="src\services\MercadoPago4D.Services.Resources.pas"/>
-        <DCCReference Include="src\services\accreditation\MercadoPago4D.Services.Accreditation.Interfaces.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Interfaces.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Stores.pas"/>
-        <DCCReference Include="src\dto\Mercadopago4D.Insight.DTO.Pedido.pas"/>
-        <DCCReference Include="src\dto\Mercadopago4D.Insight.DTO.QRCode.pas"/>
-        <DCCReference Include="src\dto\MercadoPago4D.Insight.DTO.QRs.pas"/>
-        <DCCReference Include="src\dto\Mercadopago4D.Insight.DTO.Stores.pas"/>
-        <DCCReference Include="src\dto\Mercadopago4D.Insight.DTO.Test_user.pas"/>
-        <DCCReference Include="src\dto\Mercadopago4D.Insight.DTO.UserTest.pas"/>
-        <DCCReference Include="src\dto\Pkg.Json.DTO.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Location.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Business_Hours.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Sunday.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Saturday.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Friday.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Thursday.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Wednesday.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Tuesday.pas"/>
-        <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Monday.pas"/>
+        <DCCReference Include="Unit1.pas">
+            <Form>Form1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MercadoPago4Delphi.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -151,11 +120,11 @@
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Delphi.Personality.12</Borland.Personality>
-        <Borland.ProjectType>Package</Borland.ProjectType>
+        <Borland.ProjectType>Application</Borland.ProjectType>
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">MercadoPago4D.dpk</Source>
+                    <Source Name="MainSource">MercadoPago4DClient.dpr</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -163,29 +132,18 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\MercadoPago4D.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\MercadoPago4DClient.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>MercadoPago4D.bpl</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
+                        <RemoteName>MercadoPago4DClient.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win32">
@@ -475,6 +433,7 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win32">
@@ -483,10 +442,12 @@
                 </DeployClass>
                 <DeployClass Name="DependencyFramework">
                     <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.framework</Extensions>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.framework</Extensions>
                     </Platform>
@@ -495,11 +456,25 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="DependencyModule">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
                     <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
                     </Platform>
@@ -522,10 +497,12 @@
                         <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
                     </Platform>
@@ -551,9 +528,11 @@
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="Win32">
@@ -774,9 +753,37 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSEntitlements"/>
-                <DeployClass Name="ProjectiOSInfoPList"/>
-                <DeployClass Name="ProjectiOSLaunchScreen"/>
+                <DeployClass Name="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSInfoPList">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSLaunchScreen">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen</RemoteDir>
+                        <Operation>64</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen</RemoteDir>
+                        <Operation>64</Operation>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectiOSResource">
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
@@ -788,9 +795,32 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectOSXDebug"/>
-                <DeployClass Name="ProjectOSXEntitlements"/>
-                <DeployClass Name="ProjectOSXInfoPList"/>
+                <DeployClass Name="ProjectOSXDebug">
+                    <Platform Name="OSX64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements">
+                    <Platform Name="OSX32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -823,9 +853,11 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win32">
@@ -871,19 +903,13 @@
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
             </Deployment>
             <Platforms>
-                <Platform value="Android">False</Platform>
-                <Platform value="Android64">False</Platform>
-                <Platform value="iOSDevice64">False</Platform>
-                <Platform value="iOSSimulator">False</Platform>
-                <Platform value="Linux64">False</Platform>
-                <Platform value="OSX64">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>

@@ -3,53 +3,47 @@ unit MercadoPago4D.Core.Configuration;
 interface
 
 uses
-  MercadoPago4D.Core.Interfaces,
-  MercadoPago4D.Resources.Interfaces;
+  MercadoPago4D.Core.Interfaces;
 
 type
   TMercadoPago4DConfiguration = class(TInterfacedObject, iMercadoPago4DConfiguration)
     private
-      FAccessToken : String;
-      FClientID : Integer;
+      FClientID : String;
+      FAcessToken : String;
     public
       constructor Create;
       destructor Destroy; override;
       class function New : iMercadoPago4DConfiguration;
+      function ClientID(Value : String) : iMercadoPago4DConfiguration; overload;
+      function ClientID : String; overload;
       function AccessToken(Value : String) : iMercadoPago4DConfiguration; overload;
       function AccessToken : String; overload;
-      function ClientID(Value : Integer) : iMercadoPago4DConfiguration; overload;
-      function ClientID : Integer; overload;
-      function Enviroment : iEnviroment;
   end;
 
 implementation
-
-uses
-  MercadoPago4D.Core.Enviroment;
-
-
-function TMercadoPago4DConfiguration.AccessToken: String;
-begin
-  Result := FAccessToken;
-end;
 
 function TMercadoPago4DConfiguration.AccessToken(
   Value: String): iMercadoPago4DConfiguration;
 begin
   Result := Self;
-  FAccessToken := Value;
+  FAcessToken := Value;
 end;
 
-function TMercadoPago4DConfiguration.ClientID: Integer;
+function TMercadoPago4DConfiguration.AccessToken: String;
 begin
-  Result := FClientID;
+  Result := FAcessToken;
 end;
 
 function TMercadoPago4DConfiguration.ClientID(
-  Value: Integer): iMercadoPago4DConfiguration;
+  Value: String): iMercadoPago4DConfiguration;
 begin
   Result := Self;
   FClientID := Value;
+end;
+
+function TMercadoPago4DConfiguration.ClientID: String;
+begin
+  Result := FClientID;
 end;
 
 constructor TMercadoPago4DConfiguration.Create;
@@ -61,11 +55,6 @@ destructor TMercadoPago4DConfiguration.Destroy;
 begin
 
   inherited;
-end;
-
-function TMercadoPago4DConfiguration.Enviroment: iEnviroment;
-begin
-  Result := TEnviroment.New;
 end;
 
 class function TMercadoPago4DConfiguration.New : iMercadoPago4DConfiguration;

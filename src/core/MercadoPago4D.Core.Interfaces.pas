@@ -2,44 +2,29 @@ unit MercadoPago4D.Core.Interfaces;
 
 interface
 
-uses
-  MercadoPago4D.Resources.Interfaces, Mercadopago4D.Insight.Builder.Interfaces;
-
 type
-  iMercadoPago4DConfiguration = interface;
+  iMercadoPago4DManger = interface;
   iMercadoPago4DResources = interface;
-  iMercadoPago4DManager = interface;
-
-  iEnviroment = interface
-    function Base_URL : String;
-  end;
+  iMercadoPago4DConfiguration = interface;
 
   iMercadoPago4D = interface
-    function Configuration : iMercadoPago4DConfiguration;
-    function Manager : iMercadoPago4DManager;
+    function Menager : iMercadoPago4DManger;
+    function Config : iMercadoPago4DConfiguration;
   end;
 
-  iMercadoPago4DConfiguration = interface
-    function AccessToken(Value : String) : iMercadoPago4DConfiguration; overload;
-    function AccessToken : String; overload;
-    function ClientID(Value : Integer) : iMercadoPago4DConfiguration; overload;
-    function ClientID : Integer; overload;
-    function Enviroment : iEnviroment;
-  end;
-
-  iMercadoPago4DManager = interface
-    function Resources : iMercadoPago4DResources;
-    function Builder : iManagerBuilder;
+  iMercadoPago4DManger = interface
+    function Reources : iMercadoPago4DResources;
   end;
 
   iMercadoPago4DResources = interface
-    function OAuthToken : iOAuthToken;
-    function RenewOAuthToken : iRenewOAuthToken;
-    function Store : iStore;
-    function QRCode : iQRCode;
-    function ChargeOrderQR : iChargeOrderQR;
-    function AfterSales : iAfterSales;
-    function GenerateUserTest : iGenerateUserTest;
+
+  end;
+
+  iMercadoPago4DConfiguration = interface
+    function ClientID(Value : String) : iMercadoPago4DConfiguration; overload;
+    function ClientID : String; overload;
+    function AccessToken(Value : String) : iMercadoPago4DConfiguration; overload;
+    function AccessToken : String; overload;
   end;
 
 implementation
