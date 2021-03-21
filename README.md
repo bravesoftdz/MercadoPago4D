@@ -8,11 +8,7 @@
 
 ## ⚙️ Instalação 
 
-*Pré requisitos: [**RESTRequest4Delphi](https://github.com/viniciussanchez/RESTRequest4Delphi) e [**DataSet-Serialize**](https://github.com/viniciussanchez/dataset-serialize)
-
-## ⚙️ Instalação 
-
-*Pré requisitos: [**RESTRequest4Delphi**](https://github.com/viniciussanchez/RESTRequest4Delphi) e [**DataSet-Serialize**](https://github.com/viniciussanchez/dataset-serialize)
+*Pré requisitos*: [**RESTRequest4Delphi**](https://github.com/viniciussanchez/RESTRequest4Delphi) e [**DataSet-Serialize**](https://github.com/viniciussanchez/dataset-serialize)
 
 * **Instlação manual**: Adicione as seguintes pastas ao seu projeto, em *Project > Options > Resource Compiler > Directories and Conditionals > Include file search path*
 
