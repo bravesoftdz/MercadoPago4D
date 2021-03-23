@@ -3,7 +3,8 @@ unit MercadoPago4D.Core.Configuration;
 interface
 
 uses
-  MercadoPago4D.Core.Interfaces;
+  MercadoPago4D.Core.Interfaces,
+  MercadoPago4D.Core.Enviroment;
 
 type
   TMercadoPago4DConfiguration = class(TInterfacedObject, iMercadoPago4DConfiguration)
@@ -18,6 +19,7 @@ type
       function ClientID : String; overload;
       function AccessToken(Value : String) : iMercadoPago4DConfiguration; overload;
       function AccessToken : String; overload;
+      function Enviroment : iEnviroment;
   end;
 
 implementation
@@ -55,6 +57,11 @@ destructor TMercadoPago4DConfiguration.Destroy;
 begin
 
   inherited;
+end;
+
+function TMercadoPago4DConfiguration.Enviroment: iEnviroment;
+begin
+  Result := TEnviroment.New;
 end;
 
 class function TMercadoPago4DConfiguration.New : iMercadoPago4DConfiguration;

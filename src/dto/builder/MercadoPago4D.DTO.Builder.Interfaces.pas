@@ -14,8 +14,12 @@ type
   iBuilderMonday<T> = interface;
 
   iBuilderStores = interface
-    function Name(Value : String) : iBuilderStores;
-    function External_Id(Value : String) : iBuilderStores;
+    function Name(Value : String) : iBuilderStores; overload;
+    function Name : String; overload;
+    function Date_Creation(Value : TDateTime) : iBuilderStores; overload;
+    function Date_Creation : TDateTime; overload;
+    function External_Id(Value : String) : iBuilderStores; overload;
+    function External_Id : String; overload;
     function Location : iBuilderLocation<iBuilderStores>;
     function Business_Hours : iBuilderBusiness_Hours;
     function Content : String;
@@ -23,14 +27,22 @@ type
   end;
 
   iBuilderLocation<T> = interface
-    function City_Name(Value : string) : iBuilderLocation<T>;
-    function Latitude(Value : Double) : iBuilderLocation<T>;
-    function Longitude(Value : Double) : iBuilderLocation<T>;
-    function Reference(Value : string) : iBuilderLocation<T>;
-    function State_Name(Value : string) : iBuilderLocation<T>;
-    function Street_Name(Value : string) : iBuilderLocation<T>;
-    function Street_Number(Value : string) : iBuilderLocation<T>;
-    function Zip_Code(Value : string) : iBuilderLocation<T>;
+    function City_Name(Value : string) : iBuilderLocation<T>; overload;
+    function City_Name : string; overload;
+    function Latitude(Value : Double) : iBuilderLocation<T>; overload;
+    function Latitude : Double; overload;
+    function Longitude(Value : Double) : iBuilderLocation<T>; overload;
+    function Longitude : Double; overload;
+    function Reference(Value : string) : iBuilderLocation<T>; overload;
+    function Reference : string; overload;
+    function State_Name(Value : string) : iBuilderLocation<T>; overload;
+    function State_Name : string; overload;
+    function Street_Name(Value : string) : iBuilderLocation<T>; overload;
+    function Street_Name : string; overload;
+    function Street_Number(Value : string) : iBuilderLocation<T>; overload;
+    function Street_Number : string; overload;
+    function Zip_Code(Value : string) : iBuilderLocation<T>; overload;
+    function Zip_Code : string; overload;
     function &End : T;
   end;
 
@@ -46,44 +58,58 @@ type
   end;
 
   iBuilderSunday<T> = interface
-    function Open(Value : String) : iBuilderSunday<T>;
-    function Close(Value : String) : iBuilderSunday<T>;
+    function Open(Value : String) : iBuilderSunday<T>; overload;
+    function Open : String; overload;
+    function Close(Value : String) : iBuilderSunday<T>; overload;
+    function Close : String; overload;
     function &End : T;
   end;
 
   iBuilderSaturday<T> = interface
-    function Open(Value : String) : iBuilderSaturday<T>;
-    function Close(Value : String) : iBuilderSaturday<T>;
+    function Open(Value : String) : iBuilderSaturday<T>; overload;
+    function Close(Value : String) : iBuilderSaturday<T>; overload;
+    function Open : String; overload;
+    function Close : String; overload;
     function &End : T;
   end;
 
   iBuilderFriday<T> = interface
-    function Open(Value : String) : iBuilderFriday<T>;
-    function Close(Value : String) : iBuilderFriday<T>;
+    function Open(Value : String) : iBuilderFriday<T>; overload;
+    function Close(Value : String) : iBuilderFriday<T>; overload;
+    function Open : String; overload;
+    function Close : String; overload;
     function &End : T;
   end;
 
   iBuilderThursday<T> = interface
-    function Open(Value : String) : iBuilderThursday<T>;
-    function Close(Value : String) : iBuilderThursday<T>;
+    function Open(Value : String) : iBuilderThursday<T>; overload;
+    function Close(Value : String) : iBuilderThursday<T>; overload;
+    function Open : String; overload;
+    function Close : String; overload;
     function &End : T;
   end;
 
   iBuilderWednesday<T> = interface
-    function Open(Value : String) : iBuilderWednesday<T>;
-    function Close(Value : String) : iBuilderWednesday<T>;
+    function Open(Value : String) : iBuilderWednesday<T>; overload;
+    function Close(Value : String) : iBuilderWednesday<T>; overload;
+    function Open : String; overload;
+    function Close : String; overload;
     function &End : T;
   end;
 
   iBuilderTuesday<T> = interface
-    function Open(Value : String) : iBuilderTuesday<T>;
-    function Close(Value : String) : iBuilderTuesday<T>;
+    function Open(Value : String) : iBuilderTuesday<T>; overload;
+    function Close(Value : String) : iBuilderTuesday<T>; overload;
+    function Open : String; overload;
+    function Close : String; overload;
     function &End : T;
   end;
 
   iBuilderMonday<T> = interface
-    function Open(Value : String) : iBuilderMonday<T>;
-    function Close(Value : String) : iBuilderMonday<T>;
+    function Open(Value : String) : iBuilderMonday<T>; overload;
+    function Close(Value : String) : iBuilderMonday<T>; overload;
+    function Open : String; overload;
+    function Close : String; overload;
     function &End : T;
   end;
 

@@ -13,45 +13,60 @@ type
     Panel1: TPanel;
     SpeedButton1: TSpeedButton;
     ImageList1: TImageList;
-    ActionList1: TActionList;
+    ActionListMain: TActionList;
     Action1: TAction;
-    Action2: TAction;
-    Action3: TAction;
-    Action4: TAction;
-    Action5: TAction;
-    Panel2: TPanel;
+    btn_accreditation: TAction;
+    btn_Transactional: TAction;
+    btn_after_sales: TAction;
+    btn_generate_test_user: TAction;
     CategoryButtons1: TCategoryButtons;
-    SplitView1: TSplitView;
-    btnPrintQRManually: TSpeedButton;
-    btndeleteqrcode: TSpeedButton;
-    btnSearchQRExternal_ID: TSpeedButton;
-    btnsearchgeneralqr: TSpeedButton;
-    btnUpdateQRCode: TSpeedButton;
-    btnGenerateQRCode: TSpeedButton;
-    btndeletestore: TSpeedButton;
-    btnsearchstore: TSpeedButton;
-    btnupdatestore: TSpeedButton;
-    btncreatestore: TSpeedButton;
-    btnOAuthAuthorization: TSpeedButton;
-    btnOAuthRenovation: TSpeedButton;
     Memo1: TMemo;
+    ActionListAccreditation: TActionList;
+    btn_create_store: TAction;
+    btn_update_store: TAction;
+    btn_search_stores: TAction;
+    btn_delete_store: TAction;
+    btn_generate_qr_code: TAction;
+    btn_update_qr_code: TAction;
+    btn_search_qrs_general: TAction;
+    btn_search_qr_external_id: TAction;
+    btn_delete_qr_code: TAction;
+    btn_print_qr_manually: TAction;
+    btn_oath_authorization: TAction;
+    btn_oauth_renovartion: TAction;
+    SplitViewMain: TSplitView;
+    SplitViewAccreditation: TSplitView;
+    CategoryButtons2: TCategoryButtons;
+    SplitViewtransactional: TSplitView;
+    ActionListTransactional: TActionList;
+    btn_load_order_qr: TAction;
+    btn_check_qr_availability: TAction;
+    btn_delete_order_qr: TAction;
+    btn_consult_order: TAction;
+    btn_search_order: TAction;
+    CategoryButtons3: TCategoryButtons;
+    SplitViewAftersales: TSplitView;
+    SplitViewGenerateuser: TSplitView;
+    CategoryButtons4: TCategoryButtons;
+    ActionListAftersales: TActionList;
+    btn_consult_payment: TAction;
+    btn_seek_payment: TAction;
+    btn_return_refund_payment: TAction;
+    btn_return_refund_partial_payment: TAction;
+    ActionListGeneratetestuser: TActionList;
+    CategoryButtons5: TCategoryButtons;
+    btn_generate_test_user2: TAction;
     procedure Action1Execute(Sender: TObject);
-    procedure Action2Execute(Sender: TObject);
+    procedure ViewSplit(Sender: TSplitView);
+    procedure SplitClosed(Sender: TObject);
+    procedure btn_accreditationExecute(Sender: TObject);
+    procedure btn_TransactionalExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure btncreatestoreClick(Sender: TObject);
-    procedure btnupdatestoreClick(Sender: TObject);
-    procedure btnsearchstoreClick(Sender: TObject);
-    procedure btndeletestoreClick(Sender: TObject);
-    procedure btnGenerateQRCodeClick(Sender: TObject);
-    procedure btnUpdateQRCodeClick(Sender: TObject);
-    procedure btnsearchgeneralqrClick(Sender: TObject);
-    procedure btnSearchQRExternal_IDClick(Sender: TObject);
-    procedure btndeleteqrcodeClick(Sender: TObject);
-    procedure btnPrintQRManuallyClick(Sender: TObject);
-    procedure btnOAuthAuthorizationClick(Sender: TObject);
-    procedure btnOAuthRenovationClick(Sender: TObject);
+    procedure btn_after_salesExecute(Sender: TObject);
+    procedure btn_generate_test_userExecute(Sender: TObject);
   private
-    { Private declarations }
+    FSplitExibir : TSplitView;
+    FSplitAtual : TSplitView;
   public
     { Public declarations }
   end;
@@ -63,83 +78,62 @@ implementation
 
 {$R *.dfm}
 
+uses MercadoPago4Delphi;
+
 procedure TForm1.Action1Execute(Sender: TObject);
 begin
-  ShowMessage('ok');
-end;
-
-procedure TForm1.Action2Execute(Sender: TObject);
-begin
-  if SplitView1.Opened then
-    SplitView1.close
+if SplitViewMain.Opened then
+    SplitViewMain.close
   else
-    SplitView1.open;
+    SplitViewMain.open;
 end;
 
-
-procedure TForm1.btncreatestoreClick(Sender: TObject);
+procedure TForm1.btn_accreditationExecute(Sender: TObject);
 begin
-//implementar o Criar Store
+  ViewSplit(SplitViewAccreditation);
 end;
 
-procedure TForm1.btndeleteqrcodeClick(Sender: TObject);
+procedure TForm1.btn_after_salesExecute(Sender: TObject);
 begin
-//implementar Apagar QR Code
+  ViewSplit(SplitViewAftersales);
 end;
 
-procedure TForm1.btndeletestoreClick(Sender: TObject);
+procedure TForm1.btn_generate_test_userExecute(Sender: TObject);
 begin
-//implementar Apagar Stores
+  ViewSplit(SplitViewGenerateuser);
 end;
 
-procedure TForm1.btnGenerateQRCodeClick(Sender: TObject);
+procedure TForm1.btn_TransactionalExecute(Sender: TObject);
 begin
-//implementar Gerar QR Code
-end;
-
-procedure TForm1.btnOAuthAuthorizationClick(Sender: TObject);
-begin
-//implementar OAuth - Autorização
-end;
-
-procedure TForm1.btnOAuthRenovationClick(Sender: TObject);
-begin
-//implementar OAuth - Renovação
-end;
-
-procedure TForm1.btnPrintQRManuallyClick(Sender: TObject);
-begin
-//implementar Imprimir QR manualmente
-end;
-
-procedure TForm1.btnsearchgeneralqrClick(Sender: TObject);
-begin
-//implementar Buscar QRs Geral
-end;
-
-procedure TForm1.btnSearchQRExternal_IDClick(Sender: TObject);
-begin
-//implementar Buscar QR por External_ID
-end;
-
-procedure TForm1.btnsearchstoreClick(Sender: TObject);
-begin
-//implementar Buscar Stores
-end;
-
-procedure TForm1.btnUpdateQRCodeClick(Sender: TObject);
-begin
-//implementar Atualizar QR Code
-end;
-
-procedure TForm1.btnupdatestoreClick(Sender: TObject);
-begin
-//implementar Atualizar Store
+  ViewSplit(SplitViewtransactional);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-SplitView1.Close;
+  FSplitAtual := SplitViewAccreditation;
+end;
+
+procedure TForm1.SplitClosed(Sender: TObject);
+begin
+  if not TSplitView(Sender).Equals(FSplitExibir) and Assigned(FSplitExibir) then
+    FSplitExibir.Open;
+end;
+
+procedure TForm1.ViewSplit(Sender: TSplitView);
+begin
+  if Sender <> FSplitAtual then
+  begin
+    FSplitExibir := Sender;
+    FSplitAtual.Close;
+    FSplitAtual := FSplitExibir;
+  end
+  else
+  begin
+    if Sender.Opened then
+      Sender.Close
+    else
+      Sender.Open;
+  end;
 end;
 
 end.

@@ -19,8 +19,10 @@ type
       constructor Create(Parent : T; Stores : TStoresDTO);
       destructor Destroy; override;
       class function New(Parent : T; Stores : TStoresDTO) : iBuilderWednesday<T>;
-      function Open(Value : String) : iBuilderWednesday<T>;
-      function Close(Value : String) : iBuilderWednesday<T>;
+      function Open(Value : String) : iBuilderWednesday<T>; overload;
+      function Close(Value : String) : iBuilderWednesday<T>; overload;
+      function Open : String; overload;
+      function Close : String; overload;
       function &End : T;
   end;
 
@@ -47,6 +49,11 @@ begin
   Result := FParent;
 end;
 
+function TBuilderWednesday<T>.Close: String;
+begin
+  Result := FClose;
+end;
+
 constructor TBuilderWednesday<T>.Create(Parent : T; Stores : TStoresDTO);
 begin
   FParent := Parent;
@@ -62,6 +69,11 @@ end;
 class function TBuilderWednesday<T>.New(Parent : T; Stores : TStoresDTO) : iBuilderWednesday<T>;
 begin
   Result := Self.Create(Parent, Stores);
+end;
+
+function TBuilderWednesday<T>.Open: String;
+begin
+  Result := FOpen;
 end;
 
 function TBuilderWednesday<T>.Open(Value: String): iBuilderWednesday<T>;

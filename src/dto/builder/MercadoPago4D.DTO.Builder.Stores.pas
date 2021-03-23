@@ -18,8 +18,12 @@ type
       constructor Create;
       destructor Destroy; override;
       class function New : iBuilderStores;
-      function Name(Value : String) : iBuilderStores;
-      function External_Id(Value : String) : iBuilderStores;
+      function Name(Value : String) : iBuilderStores; overload;
+      function Name : String; overload;
+      function Date_Creation(Value : TDateTime) : iBuilderStores; overload;
+      function Date_Creation : TDateTime; overload;
+      function External_Id(Value : String) : iBuilderStores; overload;
+      function External_Id : String; overload;
       function Location : iBuilderLocation<iBuilderStores>;
       function Business_Hours : iBuilderBusiness_Hours;
       function Content : String;
@@ -49,11 +53,28 @@ begin
   Result := Self;
 end;
 
+function TMercadoPago4DBuilderStores.External_Id: String;
+begin
+  Result := FStoresDTO.External_id;
+end;
+
 constructor TMercadoPago4DBuilderStores.Create;
 begin
   FStoresDTO := TStoresDTO.Create;
   FLocation := TBuilderLocation<iBuilderStores>.New(Self, FStoresDTO);
   FBusiness_Hours := TBuilderBusiness_Hours.New(Self, FStoresDTO);
+end;
+
+function TMercadoPago4DBuilderStores.Date_Creation(
+  Value: TDateTime): iBuilderStores;
+begin
+  Result := Self;
+  FStoresDTO.Date_Creation := Value;
+end;
+
+function TMercadoPago4DBuilderStores.Date_Creation: TDateTime;
+begin
+  Result := FStoresDTO.Date_Creation;
 end;
 
 destructor TMercadoPago4DBuilderStores.Destroy;
@@ -77,6 +98,11 @@ function TMercadoPago4DBuilderStores.Name(Value: String): iBuilderStores;
 begin
   Result := Self;
   FStoresDTO.Name := Value;
+end;
+
+function TMercadoPago4DBuilderStores.Name: String;
+begin
+
 end;
 
 class function TMercadoPago4DBuilderStores.New : iBuilderStores;

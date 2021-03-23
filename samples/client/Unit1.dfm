@@ -18,7 +18,7 @@ object Form1: TForm1
     Left = 0
     Top = 0
     Width = 737
-    Height = 69
+    Height = 62
     Align = alTop
     BevelOuter = bvNone
     Color = clWindowFrame
@@ -28,7 +28,7 @@ object Form1: TForm1
       Left = 0
       Top = 0
       Width = 62
-      Height = 69
+      Height = 62
       Action = Action1
       Align = alLeft
       Flat = True
@@ -323,46 +323,57 @@ object Form1: TForm1
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
+      ExplicitHeight = 69
     end
   end
-  object Panel2: TPanel
-    Left = 0
-    Top = 69
-    Width = 57
-    Height = 570
-    Align = alLeft
-    BevelOuter = bvNone
-    Color = clGrayText
-    ParentBackground = False
+  object Memo1: TMemo
+    Left = 50
+    Top = 62
+    Width = 687
+    Height = 577
+    Align = alClient
     TabOrder = 1
-    ExplicitHeight = 507
+  end
+  object SplitViewMain: TSplitView
+    Left = 0
+    Top = 62
+    Width = 50
+    Height = 577
+    AnimationDelay = 0
+    CloseStyle = svcCompact
+    Color = clGrayText
+    Opened = False
+    OpenedWidth = 200
+    Placement = svpLeft
+    TabOrder = 2
+    UseAnimation = False
     object CategoryButtons1: TCategoryButtons
       Left = 0
       Top = -26
-      Width = 57
+      Width = 200
       Height = 507
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = bsNone
       ButtonFlow = cbfVertical
       ButtonHeight = 50
-      ButtonOptions = [boFullSize, boCaptionOnlyBorder]
+      ButtonOptions = [boFullSize, boShowCaptions, boCaptionOnlyBorder]
       Categories = <
         item
           Color = clNone
           Collapsed = False
           Items = <
             item
-              Action = Action2
+              Action = btn_accreditation
             end
             item
-              Action = Action3
+              Action = btn_Transactional
             end
             item
-              Action = Action4
+              Action = btn_after_sales
             end
             item
-              Action = Action5
+              Action = btn_generate_test_user
             end>
           TextColor = clWhite
         end>
@@ -371,260 +382,241 @@ object Form1: TForm1
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      HotButtonColor = clSilver
+      HotButtonColor = 10207744
       Images = ImageList1
       RegularButtonColor = clNone
       SelectedButtonColor = clNone
       TabOrder = 0
     end
   end
-  object SplitView1: TSplitView
-    Left = 57
-    Top = 69
+  object SplitViewAccreditation: TSplitView
+    Left = 50
+    Top = 62
     Width = 0
-    Height = 570
+    Height = 577
     Color = clGrayText
     Opened = False
     OpenedWidth = 200
     Placement = svpLeft
-    TabOrder = 2
-    object btnPrintQRManually: TSpeedButton
+    TabOrder = 3
+    object CategoryButtons2: TCategoryButtons
       Left = 0
-      Top = 369
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Print QR Manually'
-      Flat = True
+      Top = -26
+      Width = 208
+      Height = 587
+      BevelInner = bvNone
+      BevelOuter = bvRaised
+      BorderStyle = bsNone
+      ButtonFlow = cbfVertical
+      ButtonHeight = 45
+      ButtonOptions = [boFullSize, boShowCaptions, boCaptionOnlyBorder]
+      Categories = <
+        item
+          Color = clNone
+          Collapsed = False
+          Items = <
+            item
+              Action = btn_create_store
+            end
+            item
+              Action = btn_update_store
+            end
+            item
+              Action = btn_search_stores
+            end
+            item
+              Action = btn_delete_store
+            end
+            item
+              Action = btn_generate_qr_code
+            end
+            item
+              Action = btn_update_qr_code
+            end
+            item
+              Action = btn_search_qrs_general
+            end
+            item
+              Action = btn_search_qr_external_id
+            end
+            item
+              Action = btn_delete_qr_code
+            end
+            item
+              Action = btn_print_qr_manually
+            end
+            item
+              Action = btn_oath_authorization
+            end
+            item
+              Action = btn_oauth_renovartion
+            end>
+          TextColor = clNone
+        end>
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clInactiveBorder
       Font.Height = -16
-      Font.Name = 'Segoe UI'
+      Font.Name = 'Tahoma'
       Font.Style = []
-      ParentFont = False
-      OnClick = btnPrintQRManuallyClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btndeleteqrcode: TSpeedButton
-      Left = 0
-      Top = 328
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Delete QR Code'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btndeleteqrcodeClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btnSearchQRExternal_ID: TSpeedButton
-      Left = 0
-      Top = 287
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Search QR External_ID'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnSearchQRExternal_IDClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btnsearchgeneralqr: TSpeedButton
-      Left = 0
-      Top = 246
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Search General QR'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnsearchgeneralqrClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btnUpdateQRCode: TSpeedButton
-      Left = 0
-      Top = 205
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Update QR Code'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnUpdateQRCodeClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btnGenerateQRCode: TSpeedButton
-      Left = 0
-      Top = 164
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Generate QR Code'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnGenerateQRCodeClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btndeletestore: TSpeedButton
-      Left = 0
-      Top = 123
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Delete Store'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btndeletestoreClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btnsearchstore: TSpeedButton
-      Left = 0
-      Top = 82
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Search Store'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnsearchstoreClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btnupdatestore: TSpeedButton
-      Left = 0
-      Top = 41
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Update Store'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnupdatestoreClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btncreatestore: TSpeedButton
-      Left = 0
-      Top = 0
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'Create Store'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btncreatestoreClick
-      ExplicitTop = 8
-      ExplicitWidth = 200
-    end
-    object btnOAuthAuthorization: TSpeedButton
-      Left = 0
-      Top = 410
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'OAuth - Authorization'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnOAuthAuthorizationClick
-      ExplicitLeft = 152
-      ExplicitTop = 404
-      ExplicitWidth = 200
-    end
-    object btnOAuthRenovation: TSpeedButton
-      Left = 0
-      Top = 451
-      Width = 0
-      Height = 41
-      Align = alTop
-      Caption = 'OAuth - Renovation'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = btnOAuthRenovationClick
-      ExplicitTop = 0
-      ExplicitWidth = 200
+      HotButtonColor = 10207744
+      Images = ImageList1
+      RegularButtonColor = clNone
+      SelectedButtonColor = clNone
+      TabOrder = 0
     end
   end
-  object Memo1: TMemo
-    Left = 57
-    Top = 69
-    Width = 680
-    Height = 570
-    Align = alClient
-    TabOrder = 3
-    ExplicitLeft = 536
-    ExplicitTop = 416
-    ExplicitWidth = 185
-    ExplicitHeight = 89
+  object SplitViewtransactional: TSplitView
+    Left = 50
+    Top = 62
+    Width = 0
+    Height = 577
+    Color = clGrayText
+    Opened = False
+    OpenedWidth = 200
+    Placement = svpLeft
+    TabOrder = 4
+    object CategoryButtons3: TCategoryButtons
+      Left = -6
+      Top = -26
+      Width = 209
+      Height = 497
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      ButtonFlow = cbfVertical
+      ButtonHeight = 45
+      ButtonOptions = [boFullSize, boShowCaptions, boCaptionOnlyBorder]
+      Categories = <
+        item
+          Color = 16771839
+          Collapsed = False
+          Items = <
+            item
+              Action = btn_load_order_qr
+            end
+            item
+              Action = btn_check_qr_availability
+            end
+            item
+              Action = btn_delete_order_qr
+            end
+            item
+              Action = btn_consult_order
+            end
+            item
+              Action = btn_search_order
+            end>
+        end>
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clInactiveBorder
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Images = ImageList1
+      RegularButtonColor = clNone
+      SelectedButtonColor = clNone
+      TabOrder = 0
+    end
+  end
+  object SplitViewAftersales: TSplitView
+    Left = 50
+    Top = 62
+    Width = 0
+    Height = 577
+    Color = clGrayText
+    Opened = False
+    OpenedWidth = 200
+    Placement = svpLeft
+    TabOrder = 5
+    object CategoryButtons4: TCategoryButtons
+      Left = -6
+      Top = -27
+      Width = 257
+      Height = 513
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      ButtonFlow = cbfVertical
+      ButtonHeight = 45
+      ButtonOptions = [boFullSize, boShowCaptions, boCaptionOnlyBorder]
+      Categories = <
+        item
+          Color = 16771839
+          Collapsed = False
+          Items = <
+            item
+              Action = btn_consult_payment
+            end
+            item
+              Action = btn_seek_payment
+            end
+            item
+              Action = btn_return_refund_payment
+            end
+            item
+              Action = btn_return_refund_partial_payment
+            end>
+        end>
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clInactiveBorder
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      HotButtonColor = 10207744
+      Images = ImageList1
+      RegularButtonColor = clNone
+      SelectedButtonColor = clNone
+      TabOrder = 0
+    end
+  end
+  object SplitViewGenerateuser: TSplitView
+    Left = 50
+    Top = 62
+    Width = 0
+    Height = 577
+    Color = clGrayText
+    Opened = False
+    OpenedWidth = 200
+    Placement = svpLeft
+    TabOrder = 6
+    object CategoryButtons5: TCategoryButtons
+      Left = -2
+      Top = -27
+      Width = 200
+      Height = 137
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      ButtonFlow = cbfVertical
+      ButtonHeight = 45
+      ButtonOptions = [boFullSize, boShowCaptions, boCaptionOnlyBorder]
+      Categories = <
+        item
+          Color = 16771818
+          Collapsed = False
+          Items = <
+            item
+              Action = btn_generate_test_user2
+            end>
+        end>
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clInactiveBorder
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Images = ImageList1
+      RegularButtonColor = clNone
+      SelectedButtonColor = clNone
+      TabOrder = 0
+    end
   end
   object ImageList1: TImageList
     ColorDepth = cd32Bit
     DrawingStyle = dsTransparent
     Height = 32
     Width = 32
-    Left = 680
-    Top = 288
+    Left = 408
+    Top = 88
     Bitmap = {
       494C010105000800040020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
@@ -1689,34 +1681,117 @@ object Form1: TForm1
       FFFFFFFF00000000000000000000000000000000000000000000000000000000
       000000000000}
   end
-  object ActionList1: TActionList
+  object ActionListMain: TActionList
     Images = ImageList1
-    Left = 632
-    Top = 352
+    Left = 408
+    Top = 144
     object Action1: TAction
       ImageIndex = 0
       OnExecute = Action1Execute
     end
-    object Action2: TAction
-      Caption = 'Action2'
-      Hint = 'Accreditation'
+    object btn_accreditation: TAction
+      Caption = ' Accreditation'
       ImageIndex = 1
-      OnExecute = Action2Execute
+      OnExecute = btn_accreditationExecute
     end
-    object Action3: TAction
-      Caption = 'Action3'
+    object btn_Transactional: TAction
+      Caption = ' Transactional'
       Hint = 'Transactional'
       ImageIndex = 4
+      OnExecute = btn_TransactionalExecute
     end
-    object Action4: TAction
-      Caption = 'Action4'
-      Hint = 'After Sales'
+    object btn_after_sales: TAction
+      Caption = ' After sales'
       ImageIndex = 3
+      OnExecute = btn_after_salesExecute
     end
-    object Action5: TAction
-      Caption = 'Action5'
+    object btn_generate_test_user: TAction
+      Caption = ' Generate test user'
       Hint = 'Generate test user'
       ImageIndex = 2
+      OnExecute = btn_generate_test_userExecute
+    end
+  end
+  object ActionListAccreditation: TActionList
+    Left = 400
+    Top = 200
+    object btn_create_store: TAction
+      Caption = 'Create Store'
+    end
+    object btn_update_store: TAction
+      Caption = 'Update Store'
+    end
+    object btn_search_stores: TAction
+      Caption = 'Search Stores'
+    end
+    object btn_delete_store: TAction
+      Caption = 'Delete Store'
+    end
+    object btn_generate_qr_code: TAction
+      Caption = 'Generate QR Code'
+    end
+    object btn_update_qr_code: TAction
+      Caption = 'Update QR Code'
+    end
+    object btn_search_qrs_general: TAction
+      Caption = 'Search QRs General'
+    end
+    object btn_search_qr_external_id: TAction
+      Caption = 'Search QR por Externa_ID'
+    end
+    object btn_delete_qr_code: TAction
+      Caption = 'Delete QR Code'
+    end
+    object btn_print_qr_manually: TAction
+      Caption = 'Print QR Manually'
+    end
+    object btn_oath_authorization: TAction
+      Caption = 'OAuth - Authorization'
+    end
+    object btn_oauth_renovartion: TAction
+      Caption = 'OAuth - Renovation'
+    end
+  end
+  object ActionListTransactional: TActionList
+    Left = 384
+    Top = 264
+    object btn_load_order_qr: TAction
+      Caption = ' Load order in QR'
+    end
+    object btn_check_qr_availability: TAction
+      Caption = ' Check QR Availability'
+    end
+    object btn_delete_order_qr: TAction
+      Caption = ' Delete Order in QR'
+    end
+    object btn_consult_order: TAction
+      Caption = 'Consult Order'
+    end
+    object btn_search_order: TAction
+      Caption = 'Search Order'
+    end
+  end
+  object ActionListAftersales: TActionList
+    Left = 370
+    Top = 342
+    object btn_consult_payment: TAction
+      Caption = ' Consult Payment'
+    end
+    object btn_seek_payment: TAction
+      Caption = ' Seek Payment'
+    end
+    object btn_return_refund_payment: TAction
+      Caption = ' Return/Refund Payment'
+    end
+    object btn_return_refund_partial_payment: TAction
+      Caption = ' Return/Refund Partial Payment'
+    end
+  end
+  object ActionListGeneratetestuser: TActionList
+    Left = 352
+    Top = 424
+    object btn_generate_test_user2: TAction
+      Caption = 'Generate test user'
     end
   end
 end

@@ -6,8 +6,19 @@ uses
   MercadoPago4D.DTO.Builder.Interfaces;
 
 type
-  iCreateStore = interface
-    function CreateStore : iBuilderStores;
+  iAccreditation = interface
+    function CreateStore(Value : iBuilderStores) : iAccreditation;
+//    function UpdateStore : iBuilderStores;
+//    function SearchStores : iBuilderStores;
+//    function DeleteStores : iBuilderStores;
+//    function GenerateQRCode : iBuilderStores;
+//    function UpdateQRCode : iBuilderStores;
+//    function SearchQRsCode : iBuilderStores;
+//    function SearchQRExternalID : iBuilderStores;
+//    function DeleteQRCode : iBuilderStores;
+//    function PrintQRManually : iBuilderStores;
+//    function OAuthAutorization : iBuilderStores;
+//    function OAuthRenovation : iBuilderStores;
   end;
 
 implementation

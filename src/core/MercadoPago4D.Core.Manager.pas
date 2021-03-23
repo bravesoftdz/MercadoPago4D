@@ -14,7 +14,7 @@ type
       constructor Create(Parent : iMercadoPago4DConfiguration);
       destructor Destroy; override;
       class function New(Parent : iMercadoPago4DConfiguration) : iMercadoPago4DManger;
-      function Reources : iMercadoPago4DResources;
+      function Resources : iMercadoPago4DResources;
   end;
 
 implementation
@@ -38,7 +38,7 @@ begin
   Result := Self.Create(Parent);
 end;
 
-function TMercadoPago4DManger.Reources: iMercadoPago4DResources;
+function TMercadoPago4DManger.Resources: iMercadoPago4DResources;
 begin
   Result := TMercadoPago4DResources.New(FParent);
 end;

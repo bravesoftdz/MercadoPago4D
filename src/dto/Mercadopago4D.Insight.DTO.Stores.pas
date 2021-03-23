@@ -131,11 +131,13 @@ type
   TStoresDTO = class(TJsonDTO)
   private
     FBusiness_hours: TBusiness_hoursDTO;
+    FDate_Creation: TDateTime;
     FExternal_id: string;
     FLocation: TLocationDTO;
     FName: string;
   published
     property Business_hours: TBusiness_hoursDTO read FBusiness_hours write FBusiness_hours;
+    property Date_Creation: TDateTime read FDate_Creation write FDate_Creation;
     property External_id: string read FExternal_id write FExternal_id;
     property Location: TLocationDTO read FLocation write FLocation;
     property Name: string read FName write FName;
