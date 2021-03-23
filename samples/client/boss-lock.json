@@ -1,11 +1,11 @@
 {
 	"hash": "62608e08adc29a8d6dbc9754e659f125",
-	"updated": "2021-03-18T16:26:48.2071613-03:00",
+	"updated": "2021-03-23T17:03:50.1062706-03:00",
 	"installedModules": {
 		"github.com/alepmedeiros/mercadopago4d": {
 			"name": "mercadopago4d",
-			"version": "1.0.1",
-			"hash": "e9c79d1469a20c049a8ce5f9b93875d3",
+			"version": "1.0.3",
+			"hash": "4fd7e48816560599e01ccc5a421d7cf6",
 			"artifacts": {},
 			"failed": false,
 			"changed": false

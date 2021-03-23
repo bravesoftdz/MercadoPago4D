@@ -3,7 +3,8 @@ unit MercadoPago4D.Core.Interfaces;
 interface
 
 uses
-  MercadoPago4D.Services.Accreditation.Interfaces;
+  MercadoPago4D.Services.Accreditation.Interfaces,
+  MercadoPago4D.DTO.Builder.Interfaces;
 
 type
   iMercadoPago4DManger = interface;
@@ -21,6 +22,7 @@ type
   end;
 
   iMercadoPago4DResources = interface
+    function Builder : iBuilder;
     function Accreditation : iAccreditation;
   end;
 

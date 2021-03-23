@@ -113,6 +113,10 @@ type
     function &End : T;
   end;
 
+  iBuilder = interface
+    function BuilderStore : iBuilderStores;
+  end;
+
 implementation
 
 end.
