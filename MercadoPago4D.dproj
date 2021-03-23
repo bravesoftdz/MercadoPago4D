@@ -137,6 +137,8 @@
         <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Wednesday.pas"/>
         <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Tuesday.pas"/>
         <DCCReference Include="src\dto\builder\MercadoPago4D.DTO.Builder.Monday.pas"/>
+        <DCCReference Include="src\services\accreditation\MercadoPago4D.Services.Accreditation.Manager.pas"/>
+        <DCCReference Include="src\core\MercadoPago4D.Core.Enviroment.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -173,7 +175,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\MercadoPago4D.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\Public\Documents\Embarcadero\Studio\21.0\Bpl\MercadoPago4D.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>MercadoPago4D.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
