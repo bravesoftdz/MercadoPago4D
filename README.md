@@ -38,7 +38,6 @@ implementation
 const
   //Informações encontradas na plataforma do juno em integrações
   ClientId = 'ClientId';
-  ClientSecret = 'ClientSecret';
   ResourceToken = 'ResourceToken';
 
 initialization
