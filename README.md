@@ -38,7 +38,7 @@ implementation
 const
   //Informações encontradas na plataforma do juno em integrações
   ClientId = 'ClientId';
-  ResourceToken = 'ResourceToken';
+  AccessToken = 'ResourceToken';
 
 initialization
   _MercadoPago4D := TMercadoPago4D.New;
@@ -46,8 +46,7 @@ initialization
   _MercadoPago4D
     .Config
     .ClientId(ClientId)
-    .ClientSecret(ClientSecret)
-    .ResourceToken(ResourceToken);
+    .AccessToken(AccessToken);
 ```
 
 ## Observação
