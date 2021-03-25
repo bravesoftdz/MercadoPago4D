@@ -101,112 +101,61 @@ end;
 
 procedure TForm1.btn_create_storeExecute(Sender: TObject);
 begin
+  Memo1.Lines.Add(
   _MercadoPago4D
-    .Menager
+    .Manager
       .Resources
         .Accreditation
-          .CreateStore
-                    .Name('Loja Delphi')
-                    .Business_Hours
-                      .Monday
-                        .Open('08:00')
-                        .Close('11:00')
-                      .&End
-                      .Monday
-                        .Open('13:00')
-                        .Close('21:00')
-                      .&End
-                      .Tuesday
-                        .Open('11:00')
-                        .Close('21:00')
-                      .&End
-                      .Wednesday
-                        .Open('11:00')
-                        .Close('21:00')
-                      .&End
-                      .Thursday
-                        .Open('11:00')
-                        .Close('21:00')
-                      .&End
-                      .Friday
-                        .Open('11:00')
-                        .Close('21:00')
-                      .&End
-                      .Saturday
-                        .Open('11:00')
-                        .Close('21:00')
-                      .&End
-                      .Sunday
-                        .Open('11:00')
-                        .Close('21:00')
-                      .&End
-                    .&End
-                    .Location
-                      .Zip_Code('06233-903')
-                      .Street_Number('3003')
-                      .Street_Name('Av. das Nações Unidas')
-                      .City_Name('Osasco')
-                      .State_Name('São Paulo')
-                      .Latitude(-23.5254383)
-                      .Longitude(-46.7620313)
-                      .Reference('Melicidade')
-                    .&End
-                  .External_Id('lojadelphi')
-                .&End
-//          .CreateStore(
-//            _MercadoPago4D
-//              .Menager
-//               .Resources
-//                .Builder
-//                  .BuilderStore
-//                    .Name('Loja Delphi')
-//                    .Business_Hours
-//                      .Monday
-//                        .Open('08:00')
-//                        .Close('11:00')
-//                      .&End
-//                      .Monday
-//                        .Open('13:00')
-//                        .Close('21:00')
-//                      .&End
-//                      .Tuesday
-//                        .Open('11:00')
-//                        .Close('21:00')
-//                      .&End
-//                      .Wednesday
-//                        .Open('11:00')
-//                        .Close('21:00')
-//                      .&End
-//                      .Thursday
-//                        .Open('11:00')
-//                        .Close('21:00')
-//                      .&End
-//                      .Friday
-//                        .Open('11:00')
-//                        .Close('21:00')
-//                      .&End
-//                      .Saturday
-//                        .Open('11:00')
-//                        .Close('21:00')
-//                      .&End
-//                      .Sunday
-//                        .Open('11:00')
-//                        .Close('21:00')
-//                      .&End
-//                    .&End
-//                    .Location
-//                      .Zip_Code('06233-903')
-//                      .Street_Number('3003')
-//                      .Street_Name('Av. das Nações Unidas')
-//                      .City_Name('Osasco')
-//                      .State_Name('São Paulo')
-//                      .Latitude(-23.5254383)
-//                      .Longitude(-46.7620313)
-//                      .Reference('Melicidade')
-//                    .&End
-//                  .External_Id('lojadelphi')
-//                .&End
-//          );
+          .CreateStore(_MercadoPago4D
+                        .BuilderManager
+                          .Stores
+                            .Name('Loja Delphi')
+                            .Business_Hours
+                              .Monday
+                                .Open('08:00')
+                                .Close('11:00')
+                              .&End
+                              .Monday
+                                .Open('13:00')
+                                .Close('21:00')
+                              .&End
+                              .Tuesday
+                                .Open('11:00')
+                                .Close('21:00')
+                              .&End
+                              .Wednesday
+                                .Open('11:00')
+                                .Close('21:00')
+                              .&End
+                              .Thursday
+                                .Open('11:00')
+                                .Close('21:00')
+                              .&End
+                              .Friday
+                                .Open('11:00')
+                                .Close('21:00')
+                              .&End
+                              .Saturday
+                                .Open('11:00')
+                                .Close('21:00')
+                              .&End
+                              .Sunday
+                                .Open('11:00')
+                                .Close('21:00')
+                              .&End
+                            .&End
+                            .Location
+                              .Zip_Code('06233-903')
+                              .Street_Number('3003')
+                              .Street_Name('Av. das Nações Unidas')
+                              .City_Name('Osasco')
+                              .State_Name('São Paulo')
+                              .Latitude(-23.5254383)
+                              .Longitude(-46.7620313)
+                              .Reference('Melicidade')
+                            .&End
+                          .External_Id('lojadelphi')
+                        .&End).Content);
 end;
 
 procedure TForm1.btn_generate_test_userExecute(Sender: TObject);
