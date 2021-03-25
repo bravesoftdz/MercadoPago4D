@@ -1,0 +1,78 @@
+package MercadoPago4D;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  bindengine,
+  dbrtl,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
+  bindcomp;
+
+contains
+  MercadoPago4D in 'src\MercadoPago4D.pas',
+  MercadoPago4D.Core.Interfaces in 'src\core\MercadoPago4D.Core.Interfaces.pas',
+  MercadoPago4D.Core.Configuration in 'src\core\MercadoPago4D.Core.Configuration.pas',
+  MercadoPago4D.Core.Manager in 'src\core\MercadoPago4D.Core.Manager.pas',
+  MercadoPago4D.Services.Resources in 'src\services\MercadoPago4D.Services.Resources.pas',
+  MercadoPago4D.Services.Interfaces in 'src\services\MercadoPago4D.Services.Interfaces.pas',
+  Mercadopago4D.Model.DTO.Pedido in 'src\model\Mercadopago4D.Model.DTO.Pedido.pas',
+  Mercadopago4D.Model.DTO.QRCode in 'src\model\Mercadopago4D.Model.DTO.QRCode.pas',
+  MercadoPago4D.Model.DTO.QRs in 'src\model\MercadoPago4D.Model.DTO.QRs.pas',
+  Mercadopago4D.Model.DTO.Stores in 'src\model\Mercadopago4D.Model.DTO.Stores.pas',
+  Mercadopago4D.Model.DTO.Test_user in 'src\model\Mercadopago4D.Model.DTO.Test_user.pas',
+  Mercadopago4D.Model.DTO.UserTest in 'src\model\Mercadopago4D.Model.DTO.UserTest.pas',
+  Pkg.Json.DTO in 'src\model\Pkg.Json.DTO.pas',
+  MercadoPago4D.Core.Enviroment in 'src\core\MercadoPago4D.Core.Enviroment.pas',
+  MercadoPago4D.Model.Builder.Interfaces in 'src\model\builder\MercadoPago4D.Model.Builder.Interfaces.pas',
+  MercadoPago4D.Model.Builder.Stores in 'src\model\builder\MercadoPago4D.Model.Builder.Stores.pas',
+  MercadoPago4D.Model.Builder.Location in 'src\model\builder\MercadoPago4D.Model.Builder.Location.pas',
+  MercadoPago4D.Model.Builder.Business_Hours in 'src\model\builder\MercadoPago4D.Model.Builder.Business_Hours.pas',
+  MercadoPago4D.Model.Builder.Monday in 'src\model\builder\MercadoPago4D.Model.Builder.Monday.pas',
+  MercadoPago4D.Model.Builder.Tuesday in 'src\model\builder\MercadoPago4D.Model.Builder.Tuesday.pas',
+  MercadoPago4D.Model.Builder.Wednesday in 'src\model\builder\MercadoPago4D.Model.Builder.Wednesday.pas',
+  MercadoPago4D.Model.Builder.Thursday in 'src\model\builder\MercadoPago4D.Model.Builder.Thursday.pas',
+  MercadoPago4D.Model.Builder.Friday in 'src\model\builder\MercadoPago4D.Model.Builder.Friday.pas',
+  MercadoPago4D.Model.Builder.Saturday in 'src\model\builder\MercadoPago4D.Model.Builder.Saturday.pas',
+  MercadoPago4D.Model.Builder.Sunday in 'src\model\builder\MercadoPago4D.Model.Builder.Sunday.pas',
+  MercadoPago4D.Model.Builder.Manager in 'src\model\builder\MercadoPago4D.Model.Builder.Manager.pas',
+  MercadoPago4D.Model.Builder.QrCode in 'src\model\builder\MercadoPago4D.Model.Builder.QrCode.pas',
+  MercadoPago4D.Services.Transactional in 'src\services\MercadoPago4D.Services.Transactional.pas',
+  MercadoPago4D.Model.Builder.Order in 'src\model\builder\MercadoPago4D.Model.Builder.Order.pas',
+  MercadoPago4D.Model.Builder.Items in 'src\model\builder\MercadoPago4D.Model.Builder.Items.pas',
+  MercadoPago4D.Model.Builder.PaymentsMethod in 'src\model\builder\MercadoPago4D.Model.Builder.PaymentsMethod.pas',
+  MercadoPago4D.Services.Accreditation in 'src\services\MercadoPago4D.Services.Accreditation.pas',
+  MercadoPago4D.Services.AfterSales in 'src\services\MercadoPago4D.Services.AfterSales.pas',
+  Mercadopago4D.Model.DTO.Partial in 'src\model\Mercadopago4D.Model.DTO.Partial.pas',
+  MercadoPago4D.Model.Builder.Partial in 'src\model\builder\MercadoPago4D.Model.Builder.Partial.pas',
+  MercadoPago4D.Services.GenerateTestuser in 'src\services\MercadoPago4D.Services.GenerateTestuser.pas',
+  MercadoPago4D.Model.Builder.TestUser in 'src\model\builder\MercadoPago4D.Model.Builder.TestUser.pas';
+
+end.

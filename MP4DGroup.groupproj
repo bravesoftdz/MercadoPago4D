@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D76D2949-A048-4935-AAB0-6E1F2B284DC2}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MercadoPago4D.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="sample\pdvmp4d\MP4DPDV.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="sample\ExemploRAD\ExemploRAD.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MercadoPago4D">
+        <MSBuild Projects="MercadoPago4D.dproj"/>
+    </Target>
+    <Target Name="MercadoPago4D:Clean">
+        <MSBuild Projects="MercadoPago4D.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MercadoPago4D:Make">
+        <MSBuild Projects="MercadoPago4D.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MP4DPDV">
+        <MSBuild Projects="sample\pdvmp4d\MP4DPDV.dproj"/>
+    </Target>
+    <Target Name="MP4DPDV:Clean">
+        <MSBuild Projects="sample\pdvmp4d\MP4DPDV.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MP4DPDV:Make">
+        <MSBuild Projects="sample\pdvmp4d\MP4DPDV.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ExemploRAD">
+        <MSBuild Projects="sample\ExemploRAD\ExemploRAD.dproj"/>
+    </Target>
+    <Target Name="ExemploRAD:Clean">
+        <MSBuild Projects="sample\ExemploRAD\ExemploRAD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExemploRAD:Make">
+        <MSBuild Projects="sample\ExemploRAD\ExemploRAD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MercadoPago4D;MP4DPDV;ExemploRAD"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MercadoPago4D:Clean;MP4DPDV:Clean;ExemploRAD:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MercadoPago4D:Make;MP4DPDV:Make;ExemploRAD:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
