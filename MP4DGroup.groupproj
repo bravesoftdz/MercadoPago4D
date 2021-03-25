@@ -6,10 +6,16 @@
         <Projects Include="MercadoPago4D.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="sample\pdvmp4d\MP4DPDV.dproj">
+        <Projects Include="sample\ExemploRAD\ExemploRAD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="sample\ExemploRAD\ExemploRAD.dproj">
+        <Projects Include="sample\pdvmp4d_VCL\MP4DPDV.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="sample\PDV_FMX\PDVMercadoPago4D.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="sample\client\MercadoPago4DClient.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -29,15 +35,6 @@
     <Target Name="MercadoPago4D:Make">
         <MSBuild Projects="MercadoPago4D.dproj" Targets="Make"/>
     </Target>
-    <Target Name="MP4DPDV">
-        <MSBuild Projects="sample\pdvmp4d\MP4DPDV.dproj"/>
-    </Target>
-    <Target Name="MP4DPDV:Clean">
-        <MSBuild Projects="sample\pdvmp4d\MP4DPDV.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="MP4DPDV:Make">
-        <MSBuild Projects="sample\pdvmp4d\MP4DPDV.dproj" Targets="Make"/>
-    </Target>
     <Target Name="ExemploRAD">
         <MSBuild Projects="sample\ExemploRAD\ExemploRAD.dproj"/>
     </Target>
@@ -47,14 +44,41 @@
     <Target Name="ExemploRAD:Make">
         <MSBuild Projects="sample\ExemploRAD\ExemploRAD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="MP4DPDV">
+        <MSBuild Projects="sample\pdvmp4d_VCL\MP4DPDV.dproj"/>
+    </Target>
+    <Target Name="MP4DPDV:Clean">
+        <MSBuild Projects="sample\pdvmp4d_VCL\MP4DPDV.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MP4DPDV:Make">
+        <MSBuild Projects="sample\pdvmp4d_VCL\MP4DPDV.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PDVMercadoPago4D">
+        <MSBuild Projects="sample\PDV_FMX\PDVMercadoPago4D.dproj"/>
+    </Target>
+    <Target Name="PDVMercadoPago4D:Clean">
+        <MSBuild Projects="sample\PDV_FMX\PDVMercadoPago4D.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PDVMercadoPago4D:Make">
+        <MSBuild Projects="sample\PDV_FMX\PDVMercadoPago4D.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MercadoPago4DClient">
+        <MSBuild Projects="sample\client\MercadoPago4DClient.dproj"/>
+    </Target>
+    <Target Name="MercadoPago4DClient:Clean">
+        <MSBuild Projects="sample\client\MercadoPago4DClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MercadoPago4DClient:Make">
+        <MSBuild Projects="sample\client\MercadoPago4DClient.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="MercadoPago4D;MP4DPDV;ExemploRAD"/>
+        <CallTarget Targets="MercadoPago4D;ExemploRAD;MP4DPDV;PDVMercadoPago4D;MercadoPago4DClient"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="MercadoPago4D:Clean;MP4DPDV:Clean;ExemploRAD:Clean"/>
+        <CallTarget Targets="MercadoPago4D:Clean;ExemploRAD:Clean;MP4DPDV:Clean;PDVMercadoPago4D:Clean;MercadoPago4DClient:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="MercadoPago4D:Make;MP4DPDV:Make;ExemploRAD:Make"/>
+        <CallTarget Targets="MercadoPago4D:Make;ExemploRAD:Make;MP4DPDV:Make;PDVMercadoPago4D:Make;MercadoPago4DClient:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
