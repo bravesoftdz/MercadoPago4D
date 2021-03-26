@@ -11,8 +11,8 @@ var
 implementation
 
 const
-  CLientID = '726225177';
-  AccessToken = 'APP_USR-6249164862669891-030920-82c50f2a7c59d49dbc17277462895430-726225177';
+  CLientID = '17552238';
+  AccessToken = 'APP_USR-8656261441103947-020220-7aee7ec199adcbd1f4fc047883053119-17552238';
 
 initialization
   _MercadoPago4D := TMercadoPago4D.New;

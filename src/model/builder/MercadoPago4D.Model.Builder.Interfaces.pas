@@ -14,6 +14,10 @@ type
   iMonday<T> = interface;
   iItems<T> = interface;
   iPaymentsMethods<T> = interface;
+  iQrCode = interface;
+  iOrder = interface;
+  iPartial = interface;
+  iTestUser = interface;
 
   iStores = interface
     function Name(Value : String) : iStores;
@@ -91,6 +95,10 @@ type
 
   iBuilderManager = interface
     function Stores : iStores;
+    function QrCode : iQrCode;
+    function Order : iOrder;
+    function Partial : iPartial;
+    function TestUser : iTestUser;
   end;
 
   iQrCode = interface

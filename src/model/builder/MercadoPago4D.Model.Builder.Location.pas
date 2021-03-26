@@ -33,6 +33,7 @@ implementation
 function TBuilderLocation<T>.City_Name(Value: string): iLocation<T>;
 begin
   Result := Self;
+  FStoreDTO.Location.City_name := Value;
 end;
 
 constructor TBuilderLocation<T>.Create(Parent: T; Value : TStoresDTO);
@@ -55,11 +56,13 @@ end;
 function TBuilderLocation<T>.Latitude(Value: Double): iLocation<T>;
 begin
   Result := Self;
+  FStoreDTO.Location.Latitude := Value;
 end;
 
 function TBuilderLocation<T>.Longitude(Value: Double): iLocation<T>;
 begin
   Result := Self;
+  FStoreDTO.Location.Longitude := Value;
 end;
 
 class function TBuilderLocation<T>.New(Parent: T; Value : TStoresDTO): iLocation<T>;
@@ -70,26 +73,31 @@ end;
 function TBuilderLocation<T>.Reference(Value: string): iLocation<T>;
 begin
   Result := Self;
+  FStoreDTO.Location.Reference := Value;
 end;
 
 function TBuilderLocation<T>.State_Name(Value: string): iLocation<T>;
 begin
   Result := Self;
+  FStoreDTO.Location.State_name := Value;
 end;
 
 function TBuilderLocation<T>.Street_Name(Value: string): iLocation<T>;
 begin
   Result := Self;
+  FStoreDTO.Location.Street_name := Value;
 end;
 
 function TBuilderLocation<T>.Street_Number(Value: String): iLocation<T>;
 begin
   Result := SElf;
+  FStoreDTO.Location.Street_number := Value;
 end;
 
 function TBuilderLocation<T>.Zip_Code(Value: string): iLocation<T>;
 begin
   Result := Self;
+  FStoreDTO.Location.Zip_code := Value;
 end;
 
 end.

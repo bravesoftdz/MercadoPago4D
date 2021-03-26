@@ -106,8 +106,14 @@ begin
 
     case vHTTP of
       GET: lResponse := lRequest.Get;
-      POST: lResponse := lRequest.Post;
-      PUT: lResponse := lRequest.Put;
+      POST: begin
+        lRequest.AddBody(Body);
+        lResponse := lRequest.Post;
+      end;
+      PUT: begin
+        lRequest.AddBody(Body);
+        lResponse := lRequest.Put;
+      end;
       DELETE: lResponse := lRequest.Delete;
     end;
 

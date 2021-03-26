@@ -45,7 +45,7 @@ end;
 
 destructor TOrder.Destroy;
 begin
-
+  FOrderDTO.Free;
   inherited;
 end;
 

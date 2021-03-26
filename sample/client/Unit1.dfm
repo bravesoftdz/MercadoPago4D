@@ -1,9 +1,11 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Form1'
-  ClientHeight = 639
-  ClientWidth = 737
+  ClientHeight = 692
+  ClientWidth = 1039
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,13 +13,27 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 56
+    Top = 481
+    Width = 979
+    Height = 207
+    DataSource = DataSource1
+    TabOrder = 6
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 737
+    Width = 1039
     Height = 62
     Align = alTop
     BevelOuter = bvNone
@@ -327,78 +343,22 @@ object Form1: TForm1
     end
   end
   object Memo1: TMemo
-    Left = 50
-    Top = 62
-    Width = 687
-    Height = 577
-    Align = alClient
+    Left = 56
+    Top = 68
+    Width = 394
+    Height = 407
     TabOrder = 1
-  end
-  object SplitViewMain: TSplitView
-    Left = 0
-    Top = 62
-    Width = 50
-    Height = 577
-    AnimationDelay = 0
-    CloseStyle = svcCompact
-    Color = clGrayText
-    Opened = False
-    OpenedWidth = 200
-    Placement = svpLeft
-    TabOrder = 2
-    UseAnimation = False
-    object CategoryButtons1: TCategoryButtons
-      Left = 0
-      Top = -26
-      Width = 200
-      Height = 507
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      BorderStyle = bsNone
-      ButtonFlow = cbfVertical
-      ButtonHeight = 50
-      ButtonOptions = [boFullSize, boShowCaptions, boCaptionOnlyBorder]
-      Categories = <
-        item
-          Color = clNone
-          Collapsed = False
-          Items = <
-            item
-              Action = btn_accreditation
-            end
-            item
-              Action = btn_Transactional
-            end
-            item
-              Action = btn_after_sales
-            end
-            item
-              Action = btn_generate_test_user
-            end>
-          TextColor = clWhite
-        end>
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clInactiveBorder
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      HotButtonColor = 10207744
-      Images = ImageList1
-      RegularButtonColor = clNone
-      SelectedButtonColor = clNone
-      TabOrder = 0
-    end
   end
   object SplitViewAccreditation: TSplitView
     Left = 50
     Top = 62
     Width = 0
-    Height = 577
+    Height = 630
     Color = clGrayText
     Opened = False
     OpenedWidth = 200
     Placement = svpLeft
-    TabOrder = 3
+    TabOrder = 2
     object CategoryButtons2: TCategoryButtons
       Left = 0
       Top = -26
@@ -469,12 +429,12 @@ object Form1: TForm1
     Left = 50
     Top = 62
     Width = 0
-    Height = 577
+    Height = 630
     Color = clGrayText
     Opened = False
     OpenedWidth = 200
     Placement = svpLeft
-    TabOrder = 4
+    TabOrder = 3
     object CategoryButtons3: TCategoryButtons
       Left = -6
       Top = -26
@@ -522,12 +482,12 @@ object Form1: TForm1
     Left = 50
     Top = 62
     Width = 0
-    Height = 577
+    Height = 630
     Color = clGrayText
     Opened = False
     OpenedWidth = 200
     Placement = svpLeft
-    TabOrder = 5
+    TabOrder = 4
     object CategoryButtons4: TCategoryButtons
       Left = -6
       Top = -27
@@ -573,12 +533,12 @@ object Form1: TForm1
     Left = 50
     Top = 62
     Width = 0
-    Height = 577
+    Height = 630
     Color = clGrayText
     Opened = False
     OpenedWidth = 200
     Placement = svpLeft
-    TabOrder = 6
+    TabOrder = 5
     object CategoryButtons5: TCategoryButtons
       Left = -2
       Top = -27
@@ -610,12 +570,143 @@ object Form1: TForm1
       TabOrder = 0
     end
   end
+  object SplitViewMain: TSplitView
+    Left = 0
+    Top = 62
+    Width = 50
+    Height = 630
+    AnimationDelay = 0
+    CloseStyle = svcCompact
+    Color = clGrayText
+    Opened = False
+    OpenedWidth = 200
+    Placement = svpLeft
+    TabOrder = 7
+    UseAnimation = False
+    object CategoryButtons1: TCategoryButtons
+      Left = 0
+      Top = -26
+      Width = 200
+      Height = 507
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      ButtonFlow = cbfVertical
+      ButtonHeight = 50
+      ButtonOptions = [boFullSize, boShowCaptions, boCaptionOnlyBorder]
+      Categories = <
+        item
+          Color = clNone
+          Collapsed = False
+          Items = <
+            item
+              Action = btn_accreditation
+            end
+            item
+              Action = btn_Transactional
+            end
+            item
+              Action = btn_after_sales
+            end
+            item
+              Action = btn_generate_test_user
+            end>
+          TextColor = clWhite
+        end>
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clInactiveBorder
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      HotButtonColor = 10207744
+      Images = ImageList1
+      RegularButtonColor = clNone
+      SelectedButtonColor = clNone
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Left = 456
+    Top = 68
+    Width = 393
+    Height = 407
+    BevelInner = bvLowered
+    BevelKind = bkFlat
+    BevelOuter = bvNone
+    TabOrder = 8
+    object Image1: TImage
+      Left = 0
+      Top = 0
+      Width = 389
+      Height = 403
+    end
+  end
+  object edtStoreID: TLabeledEdit
+    Left = 857
+    Top = 79
+    Width = 174
+    Height = 21
+    EditLabel.Width = 37
+    EditLabel.Height = 13
+    EditLabel.Caption = 'StoreID'
+    TabOrder = 9
+  end
+  object edtQrID: TLabeledEdit
+    Left = 857
+    Top = 123
+    Width = 174
+    Height = 21
+    EditLabel.Width = 23
+    EditLabel.Height = 13
+    EditLabel.Caption = 'QrID'
+    TabOrder = 10
+  end
+  object edtExternalID: TLabeledEdit
+    Left = 857
+    Top = 169
+    Width = 174
+    Height = 21
+    EditLabel.Width = 51
+    EditLabel.Height = 13
+    EditLabel.Caption = 'ExternalID'
+    TabOrder = 11
+  end
+  object edtPosID: TLabeledEdit
+    Left = 857
+    Top = 217
+    Width = 174
+    Height = 21
+    EditLabel.Width = 28
+    EditLabel.Height = 13
+    EditLabel.Caption = 'PosID'
+    TabOrder = 12
+  end
+  object edtOrderID: TLabeledEdit
+    Left = 857
+    Top = 262
+    Width = 174
+    Height = 21
+    EditLabel.Width = 39
+    EditLabel.Height = 13
+    EditLabel.Caption = 'OrderID'
+    TabOrder = 13
+  end
+  object edtPaymentID: TLabeledEdit
+    Left = 857
+    Top = 310
+    Width = 174
+    Height = 21
+    EditLabel.Width = 53
+    EditLabel.Height = 13
+    EditLabel.Caption = 'PaymentID'
+    TabOrder = 14
+  end
   object ImageList1: TImageList
     ColorDepth = cd32Bit
     DrawingStyle = dsTransparent
     Height = 32
     Width = 32
-    Left = 408
+    Left = 223
     Top = 88
     Bitmap = {
       494C010105000800040020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
@@ -1683,7 +1774,7 @@ object Form1: TForm1
   end
   object ActionListMain: TActionList
     Images = ImageList1
-    Left = 408
+    Left = 223
     Top = 144
     object Action1: TAction
       ImageIndex = 0
@@ -1713,7 +1804,7 @@ object Form1: TForm1
     end
   end
   object ActionListAccreditation: TActionList
-    Left = 400
+    Left = 215
     Top = 200
     object btn_create_store: TAction
       Caption = 'Create Store'
@@ -1721,71 +1812,91 @@ object Form1: TForm1
     end
     object btn_update_store: TAction
       Caption = 'Update Store'
+      OnExecute = btn_update_storeExecute
     end
     object btn_search_stores: TAction
       Caption = 'Search Stores'
+      OnExecute = btn_search_storesExecute
     end
     object btn_delete_store: TAction
       Caption = 'Delete Store'
+      OnExecute = btn_delete_storeExecute
     end
     object btn_generate_qr_code: TAction
       Caption = 'Generate QR Code'
+      OnExecute = btn_generate_qr_codeExecute
     end
     object btn_update_qr_code: TAction
       Caption = 'Update QR Code'
+      OnExecute = btn_update_qr_codeExecute
     end
     object btn_search_qrs_general: TAction
       Caption = 'Search QRs General'
+      OnExecute = btn_search_qrs_generalExecute
     end
     object btn_search_qr_external_id: TAction
       Caption = 'Search QR por Externa_ID'
+      OnExecute = btn_search_qr_external_idExecute
     end
     object btn_delete_qr_code: TAction
       Caption = 'Delete QR Code'
+      OnExecute = btn_delete_qr_codeExecute
     end
     object btn_print_qr_manually: TAction
       Caption = 'Print QR Manually'
+      OnExecute = btn_print_qr_manuallyExecute
     end
     object btn_oath_authorization: TAction
       Caption = 'OAuth - Authorization'
+      OnExecute = btn_oath_authorizationExecute
     end
     object btn_oauth_renovartion: TAction
       Caption = 'OAuth - Renovation'
+      OnExecute = btn_oauth_renovartionExecute
     end
   end
   object ActionListTransactional: TActionList
-    Left = 384
+    Left = 199
     Top = 264
     object btn_load_order_qr: TAction
       Caption = ' Load order in QR'
+      OnExecute = btn_load_order_qrExecute
     end
     object btn_check_qr_availability: TAction
       Caption = ' Check QR Availability'
+      OnExecute = btn_check_qr_availabilityExecute
     end
     object btn_delete_order_qr: TAction
       Caption = ' Delete Order in QR'
+      OnExecute = btn_delete_order_qrExecute
     end
     object btn_consult_order: TAction
       Caption = 'Consult Order'
+      OnExecute = btn_consult_orderExecute
     end
     object btn_search_order: TAction
       Caption = 'Search Order'
+      OnExecute = btn_search_orderExecute
     end
   end
   object ActionListAftersales: TActionList
-    Left = 370
+    Left = 185
     Top = 342
     object btn_consult_payment: TAction
       Caption = ' Consult Payment'
+      OnExecute = btn_consult_paymentExecute
     end
     object btn_seek_payment: TAction
       Caption = ' Seek Payment'
+      OnExecute = btn_seek_paymentExecute
     end
     object btn_return_refund_payment: TAction
       Caption = ' Return/Refund Payment'
+      OnExecute = btn_return_refund_paymentExecute
     end
     object btn_return_refund_partial_payment: TAction
       Caption = ' Return/Refund Partial Payment'
+      OnExecute = btn_return_refund_partial_paymentExecute
     end
   end
   object ActionListGeneratetestuser: TActionList
@@ -1793,6 +1904,23 @@ object Form1: TForm1
     Top = 424
     object btn_generate_test_user2: TAction
       Caption = 'Generate test user'
+      OnExecute = btn_generate_test_user2Execute
     end
+  end
+  object DataSource1: TDataSource
+    DataSet = FDMemTable1
+    Left = 504
+    Top = 480
+  end
+  object FDMemTable1: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 216
+    Top = 408
   end
 end

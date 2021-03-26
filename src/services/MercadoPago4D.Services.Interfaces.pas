@@ -3,7 +3,7 @@ unit MercadoPago4D.Services.Interfaces;
 interface
 
 uses
-  MercadoPago4D.Model.Builder.Interfaces, Data.DB;
+  MercadoPago4D.Model.Builder.Interfaces, Data.DB, System.Classes;
 
 type
   THTTPServices = (GET, POST, PUT, DELETE);
@@ -17,6 +17,7 @@ type
 
       function DataSet(Value : TDataSet) : iAccreditation;
       function Content : String;
+      function ContentStream : TStream;
       function StatusCode : Integer;
 
       function CreateStore(Value : iStores) : iAccreditation;

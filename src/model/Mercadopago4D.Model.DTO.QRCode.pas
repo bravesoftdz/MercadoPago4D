@@ -12,12 +12,12 @@ uses
 type
   TQrCodeDTO = class(TJsonDTO)
   private
-    FExternal_Id: string;
-    FFixed_Amount: Boolean;
+    FExternal_id: string;
+    FFixed_amount: Boolean;
     FName: string;
   published
-    property External_Id: string read FExternal_Id write FExternal_Id;
-    property Fixed_Amount: Boolean read FFixed_Amount write FFixed_Amount;
+    property External_id: string read FExternal_id write FExternal_id;
+    property Fixed_amount: Boolean read FFixed_amount write FFixed_amount;
     property Name: string read FName write FName;
   end;
   

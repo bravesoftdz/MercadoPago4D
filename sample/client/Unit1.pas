@@ -6,7 +6,10 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Vcl.Buttons, Vcl.WinXCtrls, Vcl.ExtCtrls,
-  Vcl.CategoryButtons, Vcl.StdCtrls;
+  Vcl.CategoryButtons, Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client,pngimage;
 
 type
   TForm1 = class(TForm)
@@ -56,6 +59,17 @@ type
     ActionListGeneratetestuser: TActionList;
     CategoryButtons5: TCategoryButtons;
     btn_generate_test_user2: TAction;
+    DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
+    FDMemTable1: TFDMemTable;
+    Image1: TImage;
+    Panel2: TPanel;
+    edtStoreID: TLabeledEdit;
+    edtQrID: TLabeledEdit;
+    edtExternalID: TLabeledEdit;
+    edtPosID: TLabeledEdit;
+    edtOrderID: TLabeledEdit;
+    edtPaymentID: TLabeledEdit;
     procedure Action1Execute(Sender: TObject);
     procedure ViewSplit(Sender: TSplitView);
     procedure SplitClosed(Sender: TObject);
@@ -65,6 +79,27 @@ type
     procedure btn_after_salesExecute(Sender: TObject);
     procedure btn_generate_test_userExecute(Sender: TObject);
     procedure btn_create_storeExecute(Sender: TObject);
+    procedure btn_update_storeExecute(Sender: TObject);
+    procedure btn_search_storesExecute(Sender: TObject);
+    procedure btn_delete_storeExecute(Sender: TObject);
+    procedure btn_generate_qr_codeExecute(Sender: TObject);
+    procedure btn_update_qr_codeExecute(Sender: TObject);
+    procedure btn_search_qrs_generalExecute(Sender: TObject);
+    procedure btn_search_qr_external_idExecute(Sender: TObject);
+    procedure btn_delete_qr_codeExecute(Sender: TObject);
+    procedure btn_print_qr_manuallyExecute(Sender: TObject);
+    procedure btn_oath_authorizationExecute(Sender: TObject);
+    procedure btn_oauth_renovartionExecute(Sender: TObject);
+    procedure btn_load_order_qrExecute(Sender: TObject);
+    procedure btn_check_qr_availabilityExecute(Sender: TObject);
+    procedure btn_delete_order_qrExecute(Sender: TObject);
+    procedure btn_consult_orderExecute(Sender: TObject);
+    procedure btn_search_orderExecute(Sender: TObject);
+    procedure btn_consult_paymentExecute(Sender: TObject);
+    procedure btn_seek_paymentExecute(Sender: TObject);
+    procedure btn_return_refund_paymentExecute(Sender: TObject);
+    procedure btn_return_refund_partial_paymentExecute(Sender: TObject);
+    procedure btn_generate_test_user2Execute(Sender: TObject);
   private
     FSplitExibir : TSplitView;
     FSplitAtual : TSplitView;
@@ -97,6 +132,45 @@ end;
 procedure TForm1.btn_after_salesExecute(Sender: TObject);
 begin
   ViewSplit(SplitViewAftersales);
+end;
+
+procedure TForm1.btn_check_qr_availabilityExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .Transactional
+          .PosID(edtPosID.Text)//pegar o id do retorno do post
+          .CheckQRAvailability
+          .DataSet(FDMemTable1)
+          .Content);
+end;
+
+procedure TForm1.btn_consult_orderExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Transactional
+            .OrderID(edtOrderID.Text)
+            .ViewOrder
+          .DataSet(FDMemTable1)
+          .Content);
+end;
+
+procedure TForm1.btn_consult_paymentExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .AfterSales
+            .PaymentID(edtPaymentID.Text)
+            .ConsultPayment
+          .DataSet(FDMemTable1)
+          .Content);
 end;
 
 procedure TForm1.btn_create_storeExecute(Sender: TObject);
@@ -155,7 +229,84 @@ begin
                               .Reference('Melicidade')
                             .&End
                           .External_Id('lojadelphi')
-                        .&End).Content);
+                        .&End)
+                        .DataSet(FDMemTable1)
+                        .Content);
+end;
+
+procedure TForm1.btn_delete_order_qrExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Transactional
+            .ExternalID(edtExternalID.Text)
+            .DeleteOrderinQR
+          .DataSet(FDMemTable1)
+          .Content);
+end;
+
+procedure TForm1.btn_delete_qr_codeExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Accreditation
+            .QrID(edtQrID.Text)
+            .DeleteQrCode
+            .DataSet(FDMemTable1)
+            .Content);
+end;
+
+procedure TForm1.btn_delete_storeExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Accreditation
+            .SearchStores
+            .DataSet(FDMemTable1)
+            .Content);
+end;
+
+procedure TForm1.btn_generate_qr_codeExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .Accreditation
+          .GenerateQRCode(
+            _MercadoPago4D
+              .BuilderManager
+                .QrCode
+                  .Name('Caixa principal 01')
+                  .Fixed_Amount(true)
+                  .External_Id('caixa 01')
+                .&End)
+          .DataSet(FDMemTable1)
+          .Content);
+end;
+
+procedure TForm1.btn_generate_test_user2Execute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .GenerateTestUser
+          .GenerateTestUser(
+            _MercadoPago4D
+              .BuilderManager
+                .TestUser
+                  .SiteID('MLB')
+                .&End
+          )
+        .DataSet(FDMemTable1)
+        .Content);
 end;
 
 procedure TForm1.btn_generate_test_userExecute(Sender: TObject);
@@ -163,9 +314,270 @@ begin
   ViewSplit(SplitViewGenerateuser);
 end;
 
+procedure TForm1.btn_load_order_qrExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .Transactional
+          .LoadOrderinQR(
+            _MercadoPago4D
+              .BuilderManager
+                .Order
+                  .External_Reference('Pedido12345')
+                  .Notification_Url('https://hookb.in/r1nObgxaMMcY1YJeZ3PQ')
+                    .Items
+                      .ID('Produto0001')
+                      .Title('Viagem ao caribe')
+                      .CurrencyID('BRL')
+                      .UnitPrice(4.25)
+                      .Description('Lorem ipsum lorem ipsum')
+                      .Quantity(1)
+                      .PictureURL('https://s3-sa-east-1.amazonaws.com/homolog.rdcferias/media/2156/thumb-rdcferias-rdcviagens.jpg')
+                    .&End
+                    .Items
+                      .ID('Produto0002')
+                      .Title('Translado aeroporto ida')
+                      .CurrencyID('BRL')
+                      .UnitPrice(3.4)
+                      .Description('Lorem ipsum lorem ipsum')
+                      .Quantity(2)
+                      .PictureURL('https://www.criatives.com.br/wp-content/uploads/2019/04/carro-chinês-capa.jpg')
+                    .&End
+                    .Items
+                      .ID('Produto0003')
+                      .Title('Translado aeroporto volta')
+                      .CurrencyID('BRL')
+                      .UnitPrice(2.0)
+                      .Description('Lorem ipsum lorem ipsum')
+                      .Quantity(2)
+                      .PictureURL('https://i2.wp.com/www.eurodicas.com.br/wp-content/uploads/2019/02/comprar-carro-em-portugal.jpg')
+                    .&End
+                  .Payment_Methods
+                    .Installments(12)
+                  .&End
+                .&End
+          )
+          .DataSet(FDMemTable1)
+          .Content);
+end;
+
+procedure TForm1.btn_oath_authorizationExecute(Sender: TObject);
+begin
+  //To-Do Implementar
+end;
+
+procedure TForm1.btn_oauth_renovartionExecute(Sender: TObject);
+begin
+  //To-Do Implementar
+end;
+
+procedure TForm1.btn_print_qr_manuallyExecute(Sender: TObject);
+var
+  strm : TMemoryStream;
+  image : TPNGImage;
+begin
+  strm := TMemoryStream.Create;
+  try
+    strm.LoadFromStream(
+     _MercadoPago4D
+      .Manager
+        .Resources
+          .Accreditation
+            .PosID(edtPosID.Text)//id deve ser pego no retorno do post
+            .PrintQRManually
+            .ContentStream);
+    image := TPngImage.Create;
+    try
+      strm.Position := 0;
+      image.LoadFromStream(strm);
+      Image1.Picture.Graphic := image;
+    finally
+      image.Free;
+    end;
+  finally
+    strm.Free;
+  end;
+end;
+
+procedure TForm1.btn_return_refund_partial_paymentExecute(Sender: TObject);
+begin
+ Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .AfterSales
+          .ReturnPartialPaymentRefund(
+            _MercadoPago4D
+              .BuilderManager
+                .Partial
+                  .Amount(10.50)
+                .&End)
+        .DataSet(FDMemTable1)
+        .Content);
+end;
+
+procedure TForm1.btn_return_refund_paymentExecute(Sender: TObject);
+begin
+ Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .AfterSales
+          .PaymentID(edtPaymentID.Text)
+          .PaymentReturnRefund
+        .DataSet(FDMemTable1)
+        .Content);
+end;
+
+procedure TForm1.btn_search_orderExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Transactional
+            .ExternalReference('Pedido12345')
+            .SearchOrder
+          .DataSet(FDMemTable1)
+          .Content);
+end;
+
+procedure TForm1.btn_search_qrs_generalExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Accreditation
+            .SearchGeneralQRs
+            .DataSet(FDMemTable1)
+            .Content);
+end;
+
+procedure TForm1.btn_search_qr_external_idExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Accreditation
+            .ExternalID(edtExternalID.Text)//id deve ser pego no retorno do post
+            .SearchQRforExternal_ID
+            .DataSet(FDMemTable1)
+            .Content);
+end;
+
+procedure TForm1.btn_search_storesExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+    _MercadoPago4D
+      .Manager
+        .Resources
+          .Accreditation
+            .SearchStores
+            .DataSet(FDMemTable1)
+            .Content);
+end;
+
+procedure TForm1.btn_seek_paymentExecute(Sender: TObject);
+begin
+ Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .AfterSales
+          .SearchPayment
+        .DataSet(FDMemTable1)
+        .Content);
+end;
+
 procedure TForm1.btn_TransactionalExecute(Sender: TObject);
 begin
   ViewSplit(SplitViewtransactional);
+end;
+
+procedure TForm1.btn_update_qr_codeExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .Accreditation
+          .QrID(edtQrID.Text)//id deve ser pego no retorno do post
+          .GenerateQRCode(
+            _MercadoPago4D
+              .BuilderManager
+                .QrCode
+                  .Name('Nome novo')
+                  .Fixed_Amount(true)
+                .&End)
+          .DataSet(FDMemTable1)
+          .Content);
+end;
+
+procedure TForm1.btn_update_storeExecute(Sender: TObject);
+begin
+  Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .Accreditation
+          .StoreID(edtStoreID.Text)
+          .UpdateStore(
+            _MercadoPago4D
+              .BuilderManager
+                .Stores
+                .Name('Loja Delphi')
+                .Business_Hours
+                  .Monday
+                    .Open('08:00')
+                    .Close('11:00')
+                  .&End
+                  .Monday
+                    .Open('13:00')
+                    .Close('21:00')
+                  .&End
+                  .Tuesday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Wednesday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Thursday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Friday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Saturday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Sunday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                .&End
+                .Location
+                  .Zip_Code('28940-000')
+                  .Street_Number('16')
+                  .Street_Name('R. Pres. Juscelino K. de Oliveira')
+                  .City_Name('São Pedro da Aldeia')
+                  .State_Name('Rio de Janeiro')
+                  .Latitude(-22.8746978)
+                  .Longitude(-42.1132626)
+                  .Reference('Boqueirão')
+                .&End
+              .External_Id('lojadelphi')
+            .&End)
+            .DataSet(FDMemTable1)
+            .Content);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

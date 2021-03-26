@@ -17,38 +17,38 @@ type
   
   TItemsDTO = class
   private
-    FCurrency_Id: string;
+    FCurrency_id: string;
     FDescription: string;
     FId: string;
-    FPicture_Url: string;
+    FPicture_url: string;
     FQuantity: Integer;
     FTitle: string;
-    FUnit_Price: Double;
+    FUnit_price: Double;
   published
-    property Currency_Id: string read FCurrency_Id write FCurrency_Id;
+    property Currency_id: string read FCurrency_id write FCurrency_id;
     property Description: string read FDescription write FDescription;
     property Id: string read FId write FId;
-    property Picture_Url: string read FPicture_Url write FPicture_Url;
+    property Picture_url: string read FPicture_url write FPicture_url;
     property Quantity: Integer read FQuantity write FQuantity;
     property Title: string read FTitle write FTitle;
-    property Unit_Price: Double read FUnit_Price write FUnit_Price;
+    property Unit_price: Double read FUnit_price write FUnit_price;
   end;
   
   TOrderDTO = class(TJsonDTO)
   private
-    FExternal_Reference: string;
+    FExternal_reference: string;
     [JSONName('items')]
     FItemsArray: TArray<TItemsDTO>;
     [GenericListReflect]
     FItems: TObjectList<TItemsDTO>;
-    FNotification_Url: string;
-    FPayment_Methods: TPayment_MethodsDTO;
+    FNotification_url: string;
+    FPayment_methods: TPayment_MethodsDTO;
     function GetItems: TObjectList<TItemsDTO>;
   published
-    property External_Reference: string read FExternal_Reference write FExternal_Reference;
+    property External_reference: string read FExternal_reference write FExternal_reference;
     property Items: TObjectList<TItemsDTO> read GetItems;
-    property Notification_Url: string read FNotification_Url write FNotification_Url;
-    property Payment_Methods: TPayment_MethodsDTO read FPayment_Methods write FPayment_Methods;
+    property Notification_url: string read FNotification_url write FNotification_url;
+    property Payment_methods: TPayment_MethodsDTO read FPayment_methods write FPayment_methods;
   public
     constructor Create; override;
     destructor Destroy; override;

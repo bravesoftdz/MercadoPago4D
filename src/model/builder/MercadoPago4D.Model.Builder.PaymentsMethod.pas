@@ -31,6 +31,7 @@ end;
 constructor TPaymentsMethods<T>.Create(Parent : T; Value : TOrderDTO);
 begin
   FParent := Parent;
+  FOrderDTO := Value;
 end;
 
 destructor TPaymentsMethods<T>.Destroy;

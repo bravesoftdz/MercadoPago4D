@@ -22,6 +22,7 @@ type
       FExternalID : String;
       FPosID : String;
       FSize : String;
+      FContentStream : TStream;
 
       FDataSet : TDataset;
       FContent : String;
@@ -35,7 +36,7 @@ type
         EP_PRINTQR = 'create-qr-code/';
         EP_MPAGO = 'https://mpago.la/pos/';
 
-      procedure ReqResHTTP(vHTTP : THTTPServices; const URL : String; Params : String = ''; Body : String = '');
+      procedure ReqResHTTP(vHTTP : THTTPServices; const URL : String; Body : String = ''; Stream : Boolean = False);
     public
       constructor Create(Parent : iConfiguration);
       destructor Destroy; override;
@@ -51,6 +52,7 @@ type
       //Returns
       function DataSet(Value : TDataSet) : iAccreditation;
       function Content : String;
+      function ContentStream : TStream;
       function StatusCode : Integer;
 
       //Stores
@@ -78,6 +80,11 @@ implementation
 function TAccreditation.Content: String;
 begin
   Result := FContent;
+end;
+
+function TAccreditation.ContentStream: TStream;
+begin
+  Result := FContentStream;
 end;
 
 constructor TAccreditation.Create(Parent : iConfiguration);
@@ -169,7 +176,7 @@ begin
   FQrID := Value;
 end;
 
-procedure TAccreditation.ReqResHTTP(vHTTP : THTTPServices; const URL : String; Params : String = ''; Body : String = '');
+procedure TAccreditation.ReqResHTTP(vHTTP : THTTPServices; const URL : String; Body : String = ''; Stream : Boolean = False);
 var
   lRequest : iRequest;
   lResponse : iResponse;
@@ -184,16 +191,21 @@ begin
         .Accept('application/json')
         .Token('Bearer '+ FParent.AccessToken);
 
-    if not Params.IsEmpty then
-      lRequest
-        .AddParam('external_id',Params);
-
     case vHTTP of
       GET: lResponse := lRequest.Get;
-      POST: lResponse := lRequest.Post;
-      PUT: lResponse := lRequest.Put;
+      POST: begin
+        lRequest.AddBody(Body);
+        lResponse := lRequest.Post;
+      end;
+      PUT: begin
+        lRequest.AddBody(Body);
+        lResponse := lRequest.Put;
+      end;
       DELETE: lResponse := lRequest.Delete;
     end;
+
+    if Stream then
+      FContentStream := lRequest.Get.ContentStream;
 
     FStatusCode := lResponse.StatusCode;
     FContent := lResponse.Content;
