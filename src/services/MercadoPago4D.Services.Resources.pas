@@ -4,7 +4,7 @@ interface
 
 uses
   MercadoPago4D.Core.Interfaces, MercadoPago4D.Services.Interfaces,
-  MercadoPago4D.Services.Accreditation;
+  MercadoPago4D.Services.Accreditation, MercadoPago4D.Services.Transactional;
 
 type
   TResources = class(TInterfacedObject, iResources)
@@ -56,7 +56,7 @@ end;
 
 function TResources.Transactional: iTransactional;
 begin
-
+  Result := TTransactional.New(FParent);
 end;
 
 end.

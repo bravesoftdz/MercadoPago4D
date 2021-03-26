@@ -37,8 +37,6 @@ type
   TOrderDTO = class(TJsonDTO)
   private
     FExternal_reference: string;
-    [JSONName('items')]
-    FItemsArray: TArray<TItemsDTO>;
     [GenericListReflect]
     FItems: TObjectList<TItemsDTO>;
     FNotification_url: string;
@@ -74,10 +72,8 @@ end;
 function TOrderDTO.GetItems: TObjectList<TItemsDTO>;
 begin
   if not Assigned(FItems) then
-  begin
     FItems := TObjectList<TItemsDTO>.Create;
-    FItems.AddRange(FItemsArray);
-  end;
+
   Result := FItems;
 end;
 

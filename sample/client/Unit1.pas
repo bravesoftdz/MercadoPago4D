@@ -321,17 +321,18 @@ begin
     .Manager
       .Resources
         .Transactional
+          .ExternalID('caixaD01')
           .LoadOrderinQR(
             _MercadoPago4D
               .BuilderManager
                 .Order
-                  .External_Reference('Pedido12345')
-                  .Notification_Url('https://hookb.in/r1nObgxaMMcY1YJeZ3PQ')
+                  .External_Reference('PedidoD')
+                  .Notification_Url('https://hookb.in/Z2dkoGWQRjFR33eLJzMN')
                     .Items
                       .ID('Produto0001')
                       .Title('Viagem ao caribe')
                       .CurrencyID('BRL')
-                      .UnitPrice(4.25)
+                      .UnitPrice(0.1)
                       .Description('Lorem ipsum lorem ipsum')
                       .Quantity(1)
                       .PictureURL('https://s3-sa-east-1.amazonaws.com/homolog.rdcferias/media/2156/thumb-rdcferias-rdcviagens.jpg')
@@ -340,7 +341,7 @@ begin
                       .ID('Produto0002')
                       .Title('Translado aeroporto ida')
                       .CurrencyID('BRL')
-                      .UnitPrice(3.4)
+                      .UnitPrice(0.1)
                       .Description('Lorem ipsum lorem ipsum')
                       .Quantity(2)
                       .PictureURL('https://www.criatives.com.br/wp-content/uploads/2019/04/carro-chinês-capa.jpg')
@@ -349,7 +350,7 @@ begin
                       .ID('Produto0003')
                       .Title('Translado aeroporto volta')
                       .CurrencyID('BRL')
-                      .UnitPrice(2.0)
+                      .UnitPrice(0.1)
                       .Description('Lorem ipsum lorem ipsum')
                       .Quantity(2)
                       .PictureURL('https://i2.wp.com/www.eurodicas.com.br/wp-content/uploads/2019/02/comprar-carro-em-portugal.jpg')
