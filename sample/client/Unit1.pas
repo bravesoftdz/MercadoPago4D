@@ -9,7 +9,7 @@ uses
   Vcl.CategoryButtons, Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client,pngimage;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client,pngimage,RestRequest4D;
 
 type
   TForm1 = class(TForm)
@@ -382,13 +382,13 @@ begin
   strm := TMemoryStream.Create;
   try
     strm.LoadFromStream(
-     _MercadoPago4D
-      .Manager
-        .Resources
-          .Accreditation
-            .PosID(edtPosID.Text)//id deve ser pego no retorno do post
-            .PrintQRManually
-            .ContentStream);
+    TRequest.New
+    .BaseURL('https://api.qrserver.com/v1/create-qr-code/')
+    .Token('Bearer '+_MercadoPago4D.Configuration.AccessToken)
+    .AddParam('size','300x300')
+    .AddParam('data','https://mpago.la/pos/'+edtPosID.Text)
+    .Get.ContentStream
+    );
     image := TPngImage.Create;
     try
       strm.Position := 0;
@@ -401,6 +401,33 @@ begin
     strm.Free;
   end;
 end;
+//var
+//  strm : TMemoryStream;
+//  image : TPNGImage;
+//begin
+//  strm := TMemoryStream.Create();
+//  try
+//    strm.LoadFromStream(
+//     _MercadoPago4D
+//      .Manager
+//        .Resources
+//          .Accreditation
+//            .PosID(edtPosID.Text)//id deve ser pego no retorno do post
+//            .Size('300x300')
+//            .PrintQRManually
+//            .ContentStream);
+//    image := TPngImage.Create;
+//    try
+//      strm.Position := 0;
+//      image.LoadFromStream(strm);
+//      Image1.Picture.Graphic := image;
+//    finally
+//      image.Free;
+//    end;
+//  finally
+//    strm.Free;
+//  end;
+//end;
 
 procedure TForm1.btn_return_refund_partial_paymentExecute(Sender: TObject);
 begin

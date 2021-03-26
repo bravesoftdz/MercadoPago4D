@@ -36,7 +36,7 @@ type
         EP_PRINTQR = 'create-qr-code/';
         EP_MPAGO = 'https://mpago.la/pos/';
 
-      procedure ReqResHTTP(vHTTP : THTTPServices; const URL : String; Body : String = ''; Stream : Boolean = False);
+      procedure ReqResHTTP(vHTTP : THTTPServices; const URL : String; Body : String = '');
     public
       constructor Create(Parent : iConfiguration);
       destructor Destroy; override;
@@ -84,7 +84,12 @@ end;
 
 function TAccreditation.ContentStream: TStream;
 begin
-  Result := FContentStream;
+  Result := TRequest.New
+    .BaseURL(FParent.Enviroment.QrServerURL +  EP_PRINTQR)
+    .Token('Bearer '+ FParent.AccessToken)
+    .AddParam('size',FSize)
+    .AddParam('data','https://mpago.la/pos/'+FPosID)
+    .Get.ContentStream;
 end;
 
 constructor TAccreditation.Create(Parent : iConfiguration);
@@ -167,7 +172,6 @@ end;
 function TAccreditation.PrintQRManually: iAccreditation;
 begin
   Result := Self;
-  ReqResHTTP(GET,FParent.Enviroment.QrServerURL + EP_PRINTQR + '?'+FSize+'&data=https://mpago.la/pos/'+FQrID);
 end;
 
 function TAccreditation.QrID(Value: String): iAccreditation;
@@ -176,7 +180,7 @@ begin
   FQrID := Value;
 end;
 
-procedure TAccreditation.ReqResHTTP(vHTTP : THTTPServices; const URL : String; Body : String = ''; Stream : Boolean = False);
+procedure TAccreditation.ReqResHTTP(vHTTP : THTTPServices; const URL : String; Body : String = '');
 var
   lRequest : iRequest;
   lResponse : iResponse;
@@ -203,9 +207,6 @@ begin
       end;
       DELETE: lResponse := lRequest.Delete;
     end;
-
-    if Stream then
-      FContentStream := lRequest.Get.ContentStream;
 
     FStatusCode := lResponse.StatusCode;
     FContent := lResponse.Content;
@@ -238,7 +239,8 @@ end;
 function TAccreditation.Size(Value: String): iAccreditation;
 begin
   Result := Self;
-  FSize := Value;
+  if Value<>'' then
+    FSize := 'size='+Value;
 end;
 
 function TAccreditation.StatusCode: Integer;
