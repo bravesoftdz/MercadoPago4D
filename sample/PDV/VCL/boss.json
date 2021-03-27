@@ -1,0 +1,11 @@
+{
+	"name": "VCL",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./",
+	"projects": [],
+	"dependencies": {
+		"github.com/alepmedeiros/mercadopago4d": "^1.0.6"
+	}
+}

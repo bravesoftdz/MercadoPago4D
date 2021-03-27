@@ -701,6 +701,15 @@ object Form1: TForm1
     EditLabel.Caption = 'PaymentID'
     TabOrder = 14
   end
+  object Button1: TButton
+    Left = 888
+    Top = 352
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 15
+    OnClick = Button1Click
+  end
   object ImageList1: TImageList
     ColorDepth = cd32Bit
     DrawingStyle = dsTransparent

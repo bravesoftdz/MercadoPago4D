@@ -70,6 +70,7 @@ type
     edtPosID: TLabeledEdit;
     edtOrderID: TLabeledEdit;
     edtPaymentID: TLabeledEdit;
+    Button1: TButton;
     procedure Action1Execute(Sender: TObject);
     procedure ViewSplit(Sender: TSplitView);
     procedure SplitClosed(Sender: TObject);
@@ -100,6 +101,7 @@ type
     procedure btn_return_refund_paymentExecute(Sender: TObject);
     procedure btn_return_refund_partial_paymentExecute(Sender: TObject);
     procedure btn_generate_test_user2Execute(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     FSplitExibir : TSplitView;
     FSplitAtual : TSplitView;
@@ -376,58 +378,22 @@ end;
 
 procedure TForm1.btn_print_qr_manuallyExecute(Sender: TObject);
 var
-  strm : TMemoryStream;
   image : TPNGImage;
 begin
-  strm := TMemoryStream.Create;
+  image := TPngImage.Create;
   try
-    strm.LoadFromStream(
-    TRequest.New
-    .BaseURL('https://api.qrserver.com/v1/create-qr-code/')
-    .Token('Bearer '+_MercadoPago4D.Configuration.AccessToken)
-    .AddParam('size','300x300')
-    .AddParam('data','https://mpago.la/pos/'+edtPosID.Text)
-    .Get.ContentStream
-    );
-    image := TPngImage.Create;
-    try
-      strm.Position := 0;
-      image.LoadFromStream(strm);
-      Image1.Picture.Graphic := image;
-    finally
-      image.Free;
-    end;
+    image.LoadFromStream(_MercadoPago4D
+      .Manager
+        .Resources
+          .Accreditation
+            .Size('500x500')
+            .PosID(edtPosID.Text)
+            .ContentStream);
+    Image1.Picture.Graphic := image;
   finally
-    strm.Free;
+    image.Free;
   end;
 end;
-//var
-//  strm : TMemoryStream;
-//  image : TPNGImage;
-//begin
-//  strm := TMemoryStream.Create();
-//  try
-//    strm.LoadFromStream(
-//     _MercadoPago4D
-//      .Manager
-//        .Resources
-//          .Accreditation
-//            .PosID(edtPosID.Text)//id deve ser pego no retorno do post
-//            .Size('300x300')
-//            .PrintQRManually
-//            .ContentStream);
-//    image := TPngImage.Create;
-//    try
-//      strm.Position := 0;
-//      image.LoadFromStream(strm);
-//      Image1.Picture.Graphic := image;
-//    finally
-//      image.Free;
-//    end;
-//  finally
-//    strm.Free;
-//  end;
-//end;
 
 procedure TForm1.btn_return_refund_partial_paymentExecute(Sender: TObject);
 begin
@@ -606,6 +572,67 @@ begin
             .&End)
             .DataSet(FDMemTable1)
             .Content);
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+Memo1.Lines.Add(
+  _MercadoPago4D
+    .Manager
+      .Resources
+        .Accreditation
+          .CreateStore(
+           _MercadoPago4D
+            .BuilderManager
+              .Stores
+                .Name('Loja Biblioteca')
+                .Business_Hours
+                  .Monday
+                    .Open('08:00')
+                    .Close('11:00')
+                  .&End
+                  .Monday
+                    .Open('13:00')
+                    .Close('21:00')
+                  .&End
+                  .Tuesday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Wednesday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Thursday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Friday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Saturday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                  .Sunday
+                    .Open('11:00')
+                    .Close('21:00')
+                  .&End
+                .&End
+                .Location
+                  .Zip_Code('06233-903')
+                  .Street_Number('3003')
+                  .Street_Name('Av. das Nações Unidas')
+                  .City_Name('Osasco')
+                  .State_Name('São Paulo')
+                  .Latitude(-23.5254383)
+                  .Longitude(-46.7620313)
+                  .Reference('Melicidade')
+                .&End
+              .External_Id('lojabibli')
+              .&End
+          ).Content);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

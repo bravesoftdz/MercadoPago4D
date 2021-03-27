@@ -83,13 +83,18 @@ begin
 end;
 
 function TAccreditation.ContentStream: TStream;
+var
+  strm : TMemoryStream;
 begin
-  Result := TRequest.New
+  strm := TMemoryStream.Create;
+  strm.LoadFromStream(TRequest.New
     .BaseURL(FParent.Enviroment.QrServerURL +  EP_PRINTQR)
     .Token('Bearer '+ FParent.AccessToken)
     .AddParam('size',FSize)
     .AddParam('data','https://mpago.la/pos/'+FPosID)
-    .Get.ContentStream;
+    .Get.ContentStream);
+   strm.Position := 0;
+  Result := strm;
 end;
 
 constructor TAccreditation.Create(Parent : iConfiguration);

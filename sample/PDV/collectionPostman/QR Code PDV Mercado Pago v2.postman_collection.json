@@ -1,0 +1,1135 @@
+{
+	"info": {
+		"_postman_id": "1f4f089a-b614-4730-8ab2-da8afa62db85",
+		"name": "QR Code PDV Mercado Pago v2",
+		"description": "Integração de código QR para pontos de venda\n\nhttps://www.mercadopago.com.br/developers/pt/guides/in-person-payments/qr-code/introduction/\n\nVideos Integração:\n\nhttps://www.youtube.com/playlist?list=PLKDdXmNdd55Uph10VvxAh4VUuS-guKdk8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Credenciamento",
+			"item": [
+				{
+					"name": "Criar Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Loja Teste\",\n  \"business_hours\": {\n    \"monday\": [\n      {\n        \"open\": \"08:00\",\n        \"close\": \"11:00\"\n      },\n      {\n        \"open\": \"13:00\",\n        \"close\": \"21:00\"\n      }\n    ],\n    \"tuesday\": [\n      {\n        \"open\": \"11:00\",\n        \"close\": \"21:00\"\n      }\n    ],\n    \"wednesday\": [\n      {\n        \"open\": \"11:00\",\n        \"close\": \"21:00\"\n      }\n    ],\n        \"thursday\": [\n      {\n        \"open\": \"11:00\",\n        \"close\": \"21:00\"\n      }\n    ],\n        \"friday\": [\n      {\n        \"open\": \"11:00\",\n        \"close\": \"21:00\"\n      }\n    ],\n        \"saturday\": [\n      {\n        \"open\": \"11:00\",\n        \"close\": \"21:00\"\n      }\n    ],\n        \"sunday\": [\n      {\n        \"open\": \"11:00\",\n        \"close\": \"20:00\"\n      }\n    ]\n  },\n  \"location\": {\n    \"zip_code\": \"06233-903\",\n    \"street_number\": \"3003\",\n    \"street_name\": \"Av. das Nações Unidas\",\n    \"city_name\": \"Osasco\",\n    \"state_name\": \"São Paulo\",\n    \"latitude\": -23.5254383,\n    \"longitude\": -46.7620313,\n    \"reference\": \"Melicidade\"\n  },\n  \"external_id\": \"LojaTeste\"\n}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/users/{{collector_id}}/stores",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"users",
+								"{{collector_id}}",
+								"stores"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Conceito de loja serve para agrupar diversos códigos QR (cada um em um caixa) para separar diversas lojas em uma mesma conta Mercado Pago, além de exibir para o clientes compradores no mapa do aplicativo do Mercado Pago."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Teste nome novo\",\n  \"business_hours\": {\n    \"monday\": [\n      {\n        \"open\": \"08:00\",\n        \"close\": \"23:00\"\n      }\n    ]\n  },\n  \"location\": {\n    \"zip_code\": \"06233-903\",\n    \"street_number\": \"6003\",\n    \"street_name\": \"Av. das Nações Unidas\",\n    \"city_name\": \"Osasco\",\n    \"state_name\": \"São Paulo\",\n    \"latitude\": -23.5254003,\n    \"longitude\": -46.7620003,\n    \"reference\": \"Outro lugar\"\n  },\n  \"external_id\": \"123\"\n}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/users/{{collector_id}}/stores/{{store_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"users",
+								"{{collector_id}}",
+								"stores",
+								"{{store_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Stores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/users/{{collector_id}}/stores/search",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"users",
+								"{{collector_id}}",
+								"stores",
+								"search"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.mercadopago.com/users/{{collector_id}}/stores/{{store_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"users",
+								"{{collector_id}}",
+								"stores",
+								"{{store_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gerar QR Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Caixa principal 01\", \n    \"fixed_amount\": true,\n    \"category\": null,\n    \"external_id\": \"caixa 01\",\n    \"store_id\": null,\n    \"url\": null\n}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/pos",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"pos"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar QR Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Nome novo\", \n    \"fixed_amount\": true,\n    \"category\": null,\n    \"store_id\": null\n}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/pos/{{qr_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"pos",
+								"{{qr_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar QRs geral",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/pos",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"pos"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar QR por External_ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/pos?external_id={{external_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"pos"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "external_id",
+									"value": "{{external_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar QR Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.mercadopago.com/pos/{{qr_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"pos",
+								"{{qr_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Imprimir QR manualmente (Third Party)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https://mpago.la/pos/{{pos_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qrserver",
+								"com"
+							],
+							"path": [
+								"v1",
+								"create-qr-code",
+								""
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "500x500"
+								},
+								{
+									"key": "data",
+									"value": "https://mpago.la/pos/{{pos_id}}"
+								}
+							]
+						},
+						"description": "PS: O serviço utilizado é terceiro fora da responsabilidade do Mercado Pago."
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth - Autorização MP Connect / Marketplace",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"client_secret\": \"{{ACCESS_TOKEN}}\",\n    \"grant_type\": \"authorization_code\",\n    \"code\": \"{{AUTHORIZATION_CODE}}\",\n    \"redirect_uri\": \"{{SAME AS IN https://applications.mercadopago.com.br/list?platform=mp}}\"\n}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						},
+						"description": "https://www.mercadopago.com.br/developers/pt/guides/marketplace/api/create-marketplace/"
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth - Renovação MP Connect / Marketplace",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"client_secret\": \"{{ACCESS_TOKEN}}\",\n    \"grant_type\": \"refresh_token\",\n    \"refresh_token\": \"{{REFRESH_TOKEN}}\"\n}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						},
+						"description": "https://www.mercadopago.com.br/developers/pt/guides/marketplace/api/create-marketplace/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transacional",
+			"item": [
+				{
+					"name": "Carregar Pedido no QR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Ttl-Store-Preference",
+								"type": "text",
+								"value": "1800"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"external_reference\": \"Pedido12345\",\n    \"notification_url\": \"https://hookb.in/r1nObgxaMMcY1YJeZ3PQ\",\n      \"items\" :[{\n      \t\"id\": \"Produto0001\",\n        \"title\" : \"Viagem ao caribe\",\n        \"currency_id\" : \"BRL\",\n        \"unit_price\" : 4.25,\n        \"description\": \"Lorem ipsum lorem ipsum\",\n        \"quantity\" : 1,\n        \"picture_url\": \"https://s3-sa-east-1.amazonaws.com/homolog.rdcferias/media/2156/thumb-rdcferias-rdcviagens.jpg\"\n      },\n      {\n      \t\"id\": \"Produto0002\",\n        \"title\" : \"Translado aeroporto ida\",\n        \"currency_id\" : \"BRL\",\n        \"unit_price\" : 3.4,\n        \"description\": \"Lorem ipsum lorem ipsum 2\",\n        \"quantity\" : 2,\n        \"picture_url\": \"https://www.criatives.com.br/wp-content/uploads/2019/04/carro-chinês-capa.jpg\"\n      },\n      {\n      \t\"id\": \"Produto0003\",\n        \"title\" : \"Translado aeroporto volta\",\n        \"currency_id\" : \"BRL\",\n        \"unit_price\" : 2.0,\n        \"description\": \"Lorem ipsum lorem ipsum 3\",\n        \"quantity\" : 2,\n        \"picture_url\": \"https://i2.wp.com/www.eurodicas.com.br/wp-content/uploads/2019/02/comprar-carro-em-portugal.jpg\"\n      }],\n      \"payment_methods\": {\n        \"installments\": 12\n      }\n}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/mpmobile/instore/qr/{{collector_id}}/{{external_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"mpmobile",
+								"instore",
+								"qr",
+								"{{collector_id}}",
+								"{{external_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Teste com facilidade as notificações criando uma escuta web com o https://hookbin.com\n\nEm caso de split de pagamento via MP Connect é possível agregar o campo [ \"marketplace_fee\": 1.0 ] para determinar o valor da comissão."
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar disponibilidade do QR",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/mpmobile/instore/qr/{{pos_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"mpmobile",
+								"instore",
+								"qr",
+								"{{pos_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar Pedido no QR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/mpmobile/instore/qr/{{collector_id}}/{{external_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"mpmobile",
+								"instore",
+								"qr",
+								"{{collector_id}}",
+								"{{external_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Pedido (merchant order)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/merchant_orders/{{order_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"merchant_orders",
+								"{{order_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Ferramenta para rastrear ciclo de vida do pedido. Teste com facilidade criando uma escuta web com o https://hookbin.com"
+					},
+					"response": []
+				},
+				{
+					"name": "Procurar Pedido (merchant order)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/merchant_orders?external_reference=Pedido12345",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"merchant_orders"
+							],
+							"query": [
+								{
+									"key": "date_created_from",
+									"value": "2019-08-28T09:30:00.000-01:00",
+									"disabled": true
+								},
+								{
+									"key": "date_created_to",
+									"value": "2019-08-30T10:00:00.000-01:00",
+									"disabled": true
+								},
+								{
+									"key": "external_reference",
+									"value": "Pedido12345"
+								},
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pós Venda",
+			"item": [
+				{
+					"name": "Consultar Pagamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/v1/payments/{{payment_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"{{payment_id}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Procurar Pagamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/v1/payments/search?criteria=desc&sort=date_created",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"search"
+							],
+							"query": [
+								{
+									"key": "external_reference",
+									"value": "Pedido12345",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "{{payment_id}}",
+									"disabled": true
+								},
+								{
+									"key": "pos_id",
+									"value": "{{qr_id}}",
+									"disabled": true
+								},
+								{
+									"key": "collector.id",
+									"value": "{{collector_id}}",
+									"disabled": true
+								},
+								{
+									"key": "payment_method_id",
+									"value": "visa",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "rejected",
+									"disabled": true
+								},
+								{
+									"key": "status_detail",
+									"value": "cc_rejected_high_risk",
+									"disabled": true
+								},
+								{
+									"key": "transaction_amount",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "installments",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "transaction_details.installment_amount",
+									"value": "10.78",
+									"disabled": true
+								},
+								{
+									"key": "begin_date",
+									"value": "2019-07-30T00:00:00.000-04:00",
+									"disabled": true
+								},
+								{
+									"key": "end_date",
+									"value": "2019-07-30T23:59:59.000-04:00",
+									"disabled": true
+								},
+								{
+									"key": "range",
+									"value": "date_created",
+									"disabled": true
+								},
+								{
+									"key": "payment_type_id",
+									"value": "credit_card",
+									"disabled": true
+								},
+								{
+									"key": "card.first_six_digits",
+									"value": "464611",
+									"disabled": true
+								},
+								{
+									"key": "card.last_four_digits",
+									"value": "3875",
+									"disabled": true
+								},
+								{
+									"key": "payer.identification.number",
+									"value": "19119119100",
+									"disabled": true
+								},
+								{
+									"key": "card.expiration_year",
+									"value": "2022",
+									"disabled": true
+								},
+								{
+									"key": "card.expiration_month",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "150",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "600",
+									"disabled": true
+								},
+								{
+									"key": "criteria",
+									"value": "desc"
+								},
+								{
+									"key": "sort",
+									"value": "date_created"
+								},
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolução/Estorno de Pagamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadopago.com/v1/payments/{{payment_id}}/refunds",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"{{payment_id}}",
+								"refunds"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Cancela um pagamento já efetivado com sucesso."
+					},
+					"response": []
+				},
+				{
+					"name": "Devolução/Estorno Parcial de Pagamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"amount\": 10.50 }"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/v1/payments/{{payment_id}}/refunds",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"{{payment_id}}",
+								"refunds"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Devolve parte de um pagamento já efetivado com sucesso."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gerar usuário teste",
+			"item": [
+				{
+					"name": "Gerar usuário teste",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "APP_USR-8656261441103947-020220-7aee7ec199adcbd1f4fc047883053119-17552238",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"site_id\":\"MLB\"}"
+						},
+						"url": {
+							"raw": "https://api.mercadopago.com/users/test_user",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadopago",
+								"com"
+							],
+							"path": [
+								"users",
+								"test_user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "collector_id",
+			"value": "17552238"
+		}
+	]
+}

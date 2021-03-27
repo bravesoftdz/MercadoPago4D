@@ -77,6 +77,7 @@ type
     procedure Button3Click(Sender: TObject);
   private
     Json:String;
+    FStream : TStream;
   public
 
   end;
@@ -140,8 +141,8 @@ CONST
   TRANSACIONAL_URL = 'https://api.mercadopago.com/mpmobile/instore/qr/';
   MERCHANT_ORDERS = 'https://api.mercadopago.com/merchant_orders/';
   POS_VENDA_URL = 'https://api.mercadopago.com/v1/payments';
-  COLLECTOR_ID = '713237572';
-  ACCESS_TOKEN = 'APP_USR-4246549739045822-020920-f0456b2e076a37b0c83a793682b7887d-713237572';
+  COLLECTOR_ID = '17552238';
+  ACCESS_TOKEN = 'APP_USR-8656261441103947-020220-7aee7ec199adcbd1f4fc047883053119-17552238';
   QRCODE_POS = 'https://api.mercadopago.com/pos';
 
 var
@@ -190,10 +191,10 @@ begin
   JSON := '';
   JSON :=
   '{'+
-  '"name":"Caixa principal 01",'+
+  '"name":"Caixa RAD 01",'+
   '"fixed_amount": true,'+
   '"category": null,'+
-  '"external_id": "caixa01",'+
+  '"external_id": "caixaRAD01",'+
   '"store_id": null,'+
   '"url": null'+
   '}';
@@ -415,13 +416,13 @@ begin
   JSON := '';
   JSON :=
   '{'+
-  '"external_reference": "Pedido12345",'+
-  '"notification_url": "https://hookb.in/r1nObgxaMMcY1YJeZ3PQ",'+
+  '"external_reference": "Pedido12",'+
+  '"notification_url": "https://hookb.in/eKP3WRLqaPUeYYRdX7dl",'+
   '"items" :[{'+
   '"id": "Produto0001",'+
   '"title" : "Viagem ao caribe",'+
   '"currency_id" : "BRL",'+
-  '"unit_price" : 4.25,'+
+  '"unit_price" : 1,'+
   '"description": "Lorem ipsum lorem ipsum",'+
   '"quantity" : 1,'+
   '"picture_url": "https://s3-sa-east-1.amazonaws.com/homolog.rdcferias/media/2156/thumb-rdcferias-rdcviagens.jpg"'+
@@ -430,16 +431,16 @@ begin
   '"id": "Produto0002",'+
   '"title" : "Translado aeroporto ida",'+
   '"currency_id" : "BRL",'+
-  '"unit_price" : 3.4,'+
+  '"unit_price" : 1,'+
   '"description": "Lorem ipsum lorem ipsum 2",'+
-  '"quantity" : 2,'+
+  '"quantity" : 1,'+
   '"picture_url": "https://www.criatives.com.br/wp-content/uploads/2019/04/carro-chinês-capa.jpg"'+
   '},'+
   '{'+
   '"id": "Produto0003",'+
   '"title" : "Translado aeroporto volta",'+
   '"currency_id" : "BRL",'+
-  '"unit_price" : 2.0,'+
+  '"unit_price" : 1,'+
   '"description": "Lorem ipsum lorem ipsum 3",'+
   '"quantity" : 2,'+
   '"picture_url": "https://i2.wp.com/www.eurodicas.com.br/wp-content/uploads/2019/02/comprar-carro-em-portugal.jpg"'+
@@ -491,7 +492,7 @@ procedure TForm1.CriarStore1Click(Sender: TObject);
 begin
   Json := '';
   JSon :=TBuilderStores.New
-      .Name('Loja Delphi')
+      .Name('Loja RAD')
         .Business_Hours
           .Monday
             .Open('08:00')
@@ -536,15 +537,16 @@ begin
           .Longitude(-46.7620313)
           .Reference('Melicidade')
         .&End
-      .External_Id('lojadelphi')
+      .External_Id('lojarad')
     .Content;
-  Memo2.Lines.Text :=
-  TRequest.New
-    .BaseURL(CREDENCIAMENTO_URL+COLLECTOR_ID+'/stores')
-    .Accept('application/json')
-    .Token('Bearer '+ACCESS_TOKEN)
-    .AddBody(JSON)
-    .Post.Content;
+
+    Memo2.Lines.Text :=
+    TRequest.New
+      .BaseURL(CREDENCIAMENTO_URL+COLLECTOR_ID+'/stores')
+      .Accept('application/json')
+      .Token('Bearer '+ACCESS_TOKEN)
+      .AddBody(JSON)
+      .Post.Content;
 end;
 
 procedure TForm1.DevoluoEstornodePagamento1Click(Sender: TObject);
@@ -581,11 +583,11 @@ begin
   try
     strm.LoadFromStream(
     TRequest.New
-    .BaseURL('https://api.qrserver.com/v1/create-qr-code/')
-    .Token('Bearer '+ACCESS_TOKEN)
-    .AddParam('size','300x300')
-    .AddParam('data','https://mpago.la/pos/'+Edit1.Text)
-    .Get.ContentStream
+      .BaseURL('https://api.qrserver.com/v1/create-qr-code/')
+      .Token('Bearer '+ACCESS_TOKEN)
+      .AddParam('size','300x300')
+      .AddParam('data','https://mpago.la/pos/'+Edit1.Text)
+      .Get.ContentStream
     );
     image := TPngImage.Create;
     try

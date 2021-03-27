@@ -12,7 +12,9 @@ object Form3: TForm3
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -36,7 +38,7 @@ object Form3: TForm3
       object Label7: TLabel
         Left = 0
         Top = 0
-        Width = 1097
+        Width = 1056
         Height = 97
         Align = alClient
         Alignment = taCenter
@@ -50,6 +52,16 @@ object Form3: TForm3
         Layout = tlCenter
         ExplicitWidth = 316
         ExplicitHeight = 57
+      end
+      object SpeedButton1: TSpeedButton
+        Left = 1056
+        Top = 0
+        Width = 41
+        Height = 97
+        Align = alRight
+        Caption = 'F2'
+        Flat = True
+        OnClick = SpeedButton1Click
       end
     end
     object Panel3: TPanel
@@ -80,10 +92,6 @@ object Form3: TForm3
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitLeft = 128
-          ExplicitTop = 120
-          ExplicitWidth = 185
-          ExplicitHeight = 41
           object Panel11: TPanel
             Left = 0
             Top = 0
@@ -93,7 +101,6 @@ object Form3: TForm3
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitTop = 130
             object Panel7: TPanel
               Left = 0
               Top = 0
@@ -106,57 +113,26 @@ object Form3: TForm3
               Padding.Right = 5
               Padding.Bottom = 10
               TabOrder = 0
-              object Panel16: TPanel
-                Left = 5
-                Top = 10
-                Width = 350
-                Height = 45
+              object Edit1: TEdit
+                AlignWithMargins = True
+                Left = 8
+                Top = 20
+                Width = 344
+                Height = 32
+                Margins.Top = 10
                 Align = alClient
                 Alignment = taRightJustify
+                BevelInner = bvNone
                 BevelOuter = bvNone
-                Color = clWhite
+                BorderStyle = bsNone
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -15
-                Font.Name = 'Segoe UI'
+                Font.Height = -20
+                Font.Name = 'Tahoma'
                 Font.Style = []
-                Padding.Left = 3
-                Padding.Right = 5
-                ParentBackground = False
                 ParentFont = False
                 TabOrder = 0
-                ExplicitLeft = 120
-                ExplicitTop = 16
-                ExplicitWidth = 185
-                ExplicitHeight = 41
-                object Label1: TLabel
-                  Left = 3
-                  Top = 0
-                  Width = 53
-                  Height = 45
-                  Align = alLeft
-                  Caption = 'Produto'
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 14671839
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                  Layout = tlCenter
-                  ExplicitHeight = 20
-                end
-                object Label2: TLabel
-                  Left = 56
-                  Top = 0
-                  Width = 289
-                  Height = 45
-                  Align = alClient
-                  Alignment = taRightJustify
-                  Layout = tlCenter
-                  ExplicitLeft = 341
-                  ExplicitWidth = 4
-                  ExplicitHeight = 20
-                end
+                OnKeyPress = Edit1KeyPress
               end
             end
             object Panel8: TPanel
@@ -167,7 +143,6 @@ object Form3: TForm3
               Align = alTop
               BevelOuter = bvNone
               TabOrder = 1
-              ExplicitTop = 0
               object Panel9: TPanel
                 Left = 0
                 Top = 0
@@ -180,55 +155,26 @@ object Form3: TForm3
                 Padding.Right = 5
                 Padding.Bottom = 10
                 TabOrder = 0
-                object Panel18: TPanel
-                  Left = 5
-                  Top = 10
-                  Width = 170
-                  Height = 45
+                object Edit2: TEdit
+                  AlignWithMargins = True
+                  Left = 8
+                  Top = 20
+                  Width = 164
+                  Height = 32
+                  Margins.Top = 10
                   Align = alClient
                   Alignment = taRightJustify
+                  BevelInner = bvNone
                   BevelOuter = bvNone
-                  Color = clWhite
+                  BorderStyle = bsNone
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
+                  Font.Height = -20
+                  Font.Name = 'Tahoma'
                   Font.Style = []
-                  Padding.Left = 3
-                  Padding.Right = 5
-                  ParentBackground = False
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 10
-                  ExplicitTop = 18
-                  object Label5: TLabel
-                    Left = 3
-                    Top = 0
-                    Width = 78
-                    Height = 45
-                    Align = alLeft
-                    Caption = 'Quantidade'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 14671839
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentFont = False
-                    Layout = tlCenter
-                    ExplicitHeight = 20
-                  end
-                  object Label6: TLabel
-                    Left = 81
-                    Top = 0
-                    Width = 84
-                    Height = 45
-                    Align = alClient
-                    Alignment = taRightJustify
-                    Layout = tlCenter
-                    ExplicitLeft = 161
-                    ExplicitWidth = 4
-                    ExplicitHeight = 20
-                  end
+                  Text = '1'
                 end
               end
               object Panel10: TPanel
@@ -243,55 +189,25 @@ object Form3: TForm3
                 Padding.Right = 5
                 Padding.Bottom = 10
                 TabOrder = 1
-                object Panel17: TPanel
-                  Left = 5
-                  Top = 10
-                  Width = 170
-                  Height = 45
+                object Edit3: TEdit
+                  AlignWithMargins = True
+                  Left = 8
+                  Top = 20
+                  Width = 164
+                  Height = 32
+                  Margins.Top = 10
                   Align = alClient
                   Alignment = taRightJustify
+                  BevelInner = bvNone
                   BevelOuter = bvNone
-                  Color = clWhite
+                  BorderStyle = bsNone
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
+                  Font.Height = -20
+                  Font.Name = 'Tahoma'
                   Font.Style = []
-                  Padding.Left = 3
-                  Padding.Right = 5
-                  ParentBackground = False
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 10
-                  ExplicitTop = 18
-                  object Label3: TLabel
-                    Left = 3
-                    Top = 0
-                    Width = 34
-                    Height = 45
-                    Align = alLeft
-                    Caption = 'Valor'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 14671839
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentFont = False
-                    Layout = tlCenter
-                    ExplicitHeight = 20
-                  end
-                  object Label4: TLabel
-                    Left = 37
-                    Top = 0
-                    Width = 128
-                    Height = 45
-                    Align = alClient
-                    Alignment = taRightJustify
-                    Layout = tlCenter
-                    ExplicitLeft = 161
-                    ExplicitWidth = 4
-                    ExplicitHeight = 20
-                  end
                 end
               end
             end
@@ -1102,10 +1018,6 @@ object Form3: TForm3
         Padding.Right = 20
         Padding.Bottom = 30
         TabOrder = 1
-        ExplicitLeft = 648
-        ExplicitTop = 160
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object Panel13: TPanel
           Left = 20
           Top = 30
@@ -1114,10 +1026,6 @@ object Form3: TForm3
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitLeft = 360
-          ExplicitTop = 200
-          ExplicitWidth = 185
-          ExplicitHeight = 41
           object Panel14: TPanel
             Left = 0
             Top = 351
@@ -1127,7 +1035,6 @@ object Form3: TForm3
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitTop = 430
             object Shape1: TShape
               Left = 0
               Top = 0
@@ -1151,10 +1058,6 @@ object Form3: TForm3
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitLeft = 224
-              ExplicitTop = 48
-              ExplicitWidth = 185
-              ExplicitHeight = 41
               object Label8: TLabel
                 AlignWithMargins = True
                 Left = 557
@@ -1191,8 +1094,6 @@ object Form3: TForm3
                 Font.Style = []
                 ParentFont = False
                 Layout = tlCenter
-                ExplicitLeft = 537
-                ExplicitTop = 3
                 ExplicitHeight = 24
               end
             end
@@ -1206,10 +1107,6 @@ object Form3: TForm3
             BevelOuter = bvNone
             Padding.Bottom = 30
             TabOrder = 1
-            ExplicitLeft = 168
-            ExplicitTop = 80
-            ExplicitWidth = 185
-            ExplicitHeight = 41
             object Shape2: TShape
               Left = 0
               Top = 0
@@ -1219,14 +1116,127 @@ object Form3: TForm3
               Pen.Color = clWindow
               Pen.Style = psClear
               Pen.Width = 0
-              ExplicitLeft = 104
-              ExplicitTop = 48
-              ExplicitWidth = 65
-              ExplicitHeight = 65
+              ExplicitTop = -3
+            end
+            object DBGrid1: TDBGrid
+              Left = 0
+              Top = 0
+              Width = 657
+              Height = 321
+              Align = alClient
+              DataSource = DataSource1
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'ID_PRODUTO'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'DESCRICAO'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'PRECO'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'QUANTIDADE'
+                  Visible = True
+                end>
             end
           end
         end
       end
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = FDMemTable1
+    Left = 668
+    Top = 167
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Users\Criacao\Documents\GitHub\ProjectHorseSimpleORM' +
+        '\database\SimpleProject.db3'
+      'LockingMode=Normal'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    Left = 476
+    Top = 167
+  end
+  object FDQuery2: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM PRODUTO')
+    Left = 572
+    Top = 327
+    object FDQuery2ID: TWideStringField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object FDQuery2Title: TWideStringField
+      FieldName = 'Title'
+      Origin = 'Title'
+      Size = 60
+    end
+    object FDQuery2Preco: TLargeintField
+      FieldName = 'Preco'
+      Origin = 'Preco'
+    end
+    object FDQuery2Descricao: TWideStringField
+      FieldName = 'Descricao'
+      Origin = 'Descricao'
+      Size = 60
+    end
+    object FDQuery2URLImagem: TWideMemoField
+      FieldName = 'URLImagem'
+      Origin = 'URLImagem'
+      BlobType = ftWideMemo
+    end
+    object FDQuery2ProdID: TWideMemoField
+      FieldName = 'ProdID'
+      Origin = 'ProdID'
+      BlobType = ftWideMemo
+    end
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 700
+    Top = 279
+    object FDMemTable1ID_PRODUTO: TStringField
+      FieldName = 'ID_PRODUTO'
+    end
+    object FDMemTable1DESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 60
+    end
+    object FDMemTable1PRECO: TCurrencyField
+      FieldName = 'PRECO'
+    end
+    object FDMemTable1QUANTIDADE: TIntegerField
+      FieldName = 'QUANTIDADE'
+    end
+    object FDMemTable1URL: TStringField
+      FieldName = 'URL'
+      Size = 250
     end
   end
 end
