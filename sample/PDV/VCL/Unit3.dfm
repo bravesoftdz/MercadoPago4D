@@ -14,7 +14,6 @@ object Form3: TForm3
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -38,7 +37,7 @@ object Form3: TForm3
       object Label7: TLabel
         Left = 0
         Top = 0
-        Width = 1056
+        Width = 1097
         Height = 97
         Align = alClient
         Alignment = taCenter
@@ -52,16 +51,6 @@ object Form3: TForm3
         Layout = tlCenter
         ExplicitWidth = 316
         ExplicitHeight = 57
-      end
-      object SpeedButton1: TSpeedButton
-        Left = 1056
-        Top = 0
-        Width = 41
-        Height = 97
-        Align = alRight
-        Caption = 'F2'
-        Flat = True
-        OnClick = SpeedButton1Click
       end
     end
     object Panel3: TPanel
@@ -132,7 +121,6 @@ object Form3: TForm3
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
-                OnKeyPress = Edit1KeyPress
               end
             end
             object Panel8: TPanel
@@ -1107,136 +1095,24 @@ object Form3: TForm3
             BevelOuter = bvNone
             Padding.Bottom = 30
             TabOrder = 1
-            object Shape2: TShape
+            object Panel16: TPanel
               Left = 0
               Top = 0
               Width = 657
               Height = 321
               Align = alClient
-              Pen.Color = clWindow
-              Pen.Style = psClear
-              Pen.Width = 0
-              ExplicitTop = -3
-            end
-            object DBGrid1: TDBGrid
-              Left = 0
-              Top = 0
-              Width = 657
-              Height = 321
-              Align = alClient
-              DataSource = DataSource1
+              BevelOuter = bvNone
+              Color = clWhite
+              ParentBackground = False
               TabOrder = 0
-              TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'Tahoma'
-              TitleFont.Style = []
-              Columns = <
-                item
-                  Expanded = False
-                  FieldName = 'ID_PRODUTO'
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'DESCRICAO'
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'PRECO'
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'QUANTIDADE'
-                  Visible = True
-                end>
+              ExplicitLeft = 200
+              ExplicitTop = 128
+              ExplicitWidth = 185
+              ExplicitHeight = 41
             end
           end
         end
       end
-    end
-  end
-  object DataSource1: TDataSource
-    DataSet = FDMemTable1
-    Left = 668
-    Top = 167
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      
-        'Database=C:\Users\Criacao\Documents\GitHub\ProjectHorseSimpleORM' +
-        '\database\SimpleProject.db3'
-      'LockingMode=Normal'
-      'DriverID=SQLite')
-    Connected = True
-    LoginPrompt = False
-    Left = 476
-    Top = 167
-  end
-  object FDQuery2: TFDQuery
-    Connection = FDConnection1
-    SQL.Strings = (
-      'SELECT * FROM PRODUTO')
-    Left = 572
-    Top = 327
-    object FDQuery2ID: TWideStringField
-      FieldName = 'ID'
-      Origin = 'ID'
-    end
-    object FDQuery2Title: TWideStringField
-      FieldName = 'Title'
-      Origin = 'Title'
-      Size = 60
-    end
-    object FDQuery2Preco: TLargeintField
-      FieldName = 'Preco'
-      Origin = 'Preco'
-    end
-    object FDQuery2Descricao: TWideStringField
-      FieldName = 'Descricao'
-      Origin = 'Descricao'
-      Size = 60
-    end
-    object FDQuery2URLImagem: TWideMemoField
-      FieldName = 'URLImagem'
-      Origin = 'URLImagem'
-      BlobType = ftWideMemo
-    end
-    object FDQuery2ProdID: TWideMemoField
-      FieldName = 'ProdID'
-      Origin = 'ProdID'
-      BlobType = ftWideMemo
-    end
-  end
-  object FDMemTable1: TFDMemTable
-    Active = True
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 700
-    Top = 279
-    object FDMemTable1ID_PRODUTO: TStringField
-      FieldName = 'ID_PRODUTO'
-    end
-    object FDMemTable1DESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 60
-    end
-    object FDMemTable1PRECO: TCurrencyField
-      FieldName = 'PRECO'
-    end
-    object FDMemTable1QUANTIDADE: TIntegerField
-      FieldName = 'QUANTIDADE'
-    end
-    object FDMemTable1URL: TStringField
-      FieldName = 'URL'
-      Size = 250
     end
   end
 end
