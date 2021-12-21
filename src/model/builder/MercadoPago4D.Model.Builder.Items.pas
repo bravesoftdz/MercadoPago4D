@@ -11,13 +11,17 @@ type
     private
       [weak]
       FParent : T;
+      FSku_Number : String;
+      FCategory : String;
       FID : String;
       FTitle : String;
       FCurrencyID : String;
+      FUnit_Measure : String;
       FUnitPrice : Double;
       FDescription : String;
-      FQuantity : Integer;
+      FQuantity : Double;
       FPictureURL : String;
+      FTotal_Amount : Double;
       FOrderDTO : TOrderDTO;
 
       procedure AddList;
@@ -25,13 +29,17 @@ type
       constructor Create(Parent : T; Value : TOrderDTO);
       destructor Destroy; override;
       class function New(Parent : T; Value : TOrderDTO) : iItems<T>;
+      function Sku_Number(Value : string) : iItems<T>;
+      function Category(Value : String) : iItems<T>;
       function ID(Value : String) : iItems<T>;
       function Title(Value : String) :iItems<T>;
       function CurrencyID(Value : String) : iItems<T>;
+      function Unit_Measure(Value : String) : iItems<T>;
       function UnitPrice(Value : Double) : iItems<T>;
       function Description(Value : String) : iItems<T>;
-      function Quantity(Value : Integer) : iItems<T>;
+      function Quantity(Value : Double) : iItems<T>;
       function PictureURL(Value : String) : iItems<T>;
+      function Total_Amount(Value : Double) : iItems<T>;
       function &End : T;
   end;
 
@@ -56,6 +64,16 @@ begin
   FOrderDTO.Items[I].Description := FDescription;
   FOrderDTO.Items[I].Quantity := FQuantity;
   FOrderDTO.Items[I].Picture_Url := FPictureURL;
+  FOrderDTO.Items[I].Sku_number := FSku_Number;
+  FOrderDTO.Items[I].Category := FCategory;
+  FOrderDTO.Items[I].Unit_measure := FUnit_Measure;
+  FOrderDTO.Items[I].Total_amount := FTotal_Amount;
+end;
+
+function TITems<T>.Category(Value: String): iItems<T>;
+begin
+  Result := Self;
+  FCategory := Value;
 end;
 
 constructor TITems<T>.Create(Parent : T; Value : TOrderDTO);
@@ -99,10 +117,16 @@ begin
   FPictureURL := Value;
 end;
 
-function TITems<T>.Quantity(Value: Integer): iItems<T>;
+function TITems<T>.Quantity(Value: Double): iItems<T>;
 begin
   Result := Self;
   FQuantity := Value;
+end;
+
+function TITems<T>.Sku_Number(Value: string): iItems<T>;
+begin
+  Result := Self;
+  FSku_Number := Value;
 end;
 
 function TITems<T>.Title(Value: String): iItems<T>;
@@ -111,10 +135,22 @@ begin
   FTitle := Value;
 end;
 
+function TITems<T>.Total_Amount(Value: Double): iItems<T>;
+begin
+  Result := Self;
+  FTotal_Amount := Value;
+end;
+
 function TITems<T>.UnitPrice(Value: Double): iItems<T>;
 begin
   Result := Self;
   FUnitPrice := Value;
+end;
+
+function TITems<T>.Unit_Measure(Value: String): iItems<T>;
+begin
+  Result := Self;
+  FUnit_Measure := Value;
 end;
 
 end.

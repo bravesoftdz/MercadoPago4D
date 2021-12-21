@@ -14,6 +14,7 @@ type
   iMonday<T> = interface;
   iItems<T> = interface;
   iPaymentsMethods<T> = interface;
+  iSponsor<T> = interface;
   iQrCode = interface;
   iOrder = interface;
   iPartial = interface;
@@ -111,26 +112,40 @@ type
 
   iOrder = interface
     function External_Reference(Value : String) : iOrder;
+    function Total_Amount(Value : Double) : iOrder;
+    function Title(Value : String ) : iOrder;
+    function Description(Value : String ) : iOrder;
     function Items : iItems<iOrder>;
+    function Expiration_Date(Value : TDateTime) : iOrder;
     function Notification_Url(Value : String) : iOrder;
     function Payment_Methods : iPaymentsMethods<iOrder>;
+    function Sponsor : iSponsor<iOrder>;
     function Content : String;
     function &End : iOrder;
   end;
 
   iItems<T> = interface
+    function SKU_Number(Value : string) : iItems<T>;
+    function Category(Value : String) : iItems<T>;
     function ID(Value : String) : iItems<T>;
     function Title(Value : String) :iItems<T>;
     function CurrencyID(Value : String) : iItems<T>;
+    function Unit_Measure(Value : String) : iItems<T>;
     function UnitPrice(Value : Double) : iItems<T>;
     function Description(Value : String) : iItems<T>;
-    function Quantity(Value : Integer) : iItems<T>;
+    function Quantity(Value : Double) : iItems<T>;
     function PictureURL(Value : String) : iItems<T>;
+    function Total_Amount(Value : Double) : iItems<T>;
     function &End : T;
   end;
 
   iPaymentsMethods<T> = interface
     function Installments(Value : Integer) : iPaymentsMethods<T>;
+    function &End : T;
+  end;
+
+  iSponsor<T> = interface
+    function Id(Value : Int64 ) : iSponsor<T>;
     function &End : T;
   end;
 

@@ -26,6 +26,12 @@ type
       const
         EP_MPMOBILE = 'mpmobile/instore/qr/';
         EP_MO = 'merchant_orders/';
+        EP_MPPIX = 'instore/orders/qr/seller/collectors/';
+        EP_MPPIX_DELETE = 'instore/qr/seller/collectors/';
+        EP_POS = 'pos/';
+        EP_QR = 'qrs/';
+        EP_ORDERS = 'orders';
+
 
       procedure ReqResHTTP(vHTTP : THTTPServices; const URL : String; Body : String = '');
     public
@@ -75,8 +81,20 @@ end;
 function TTransactional.DeleteOrderinQR: iTransactional;
 begin
   Result := Self;
-  ReqResHTTP(DELETE, FParent.Enviroment.BaseURL + EP_MPMOBILE +
-              FParent.ClientID + FExternalID);
+//  ReqResHTTP(DELETE, FParent.Enviroment.BaseURL + EP_MPMOBILE +
+//              FParent.ClientID + FExternalID);
+  ReqResHTTP(
+    DELETE,
+    FParent.Enviroment.BaseURL
+      + EP_MPPIX_DELETE
+      + FParent.ClientID
+      + '/'
+      + EP_POS
+      + FPosID
+      + '/'
+      + EP_ORDERS,
+    ''
+  );
 end;
 
 destructor TTransactional.Destroy;
@@ -100,8 +118,21 @@ end;
 function TTransactional.LoadOrderinQR(Value : iOrder) : iTransactional;
 begin
   Result := Self;
-  ReqResHTTP(POST, FParent.Enviroment.BaseURL + EP_MPMOBILE + FParent.ClientID +
-            '/' + FExternalID, Value.Content);
+//  ReqResHTTP(POST, FParent.Enviroment.BaseURL + EP_MPMOBILE + FParent.ClientID +
+//            '/' + FExternalID, Value.Content);
+
+  ReqResHTTP(
+    POST,
+    FParent.Enviroment.BaseURL
+      + EP_MPPIX
+      + FParent.ClientID
+      + '/'
+      + EP_POS
+      + FExternalID
+      + '/'
+      + EP_QR,
+    Value.Content
+  );
 end;
 
 class function TTransactional.New (Parent : iConfiguration) : iTransactional;
@@ -161,7 +192,7 @@ function TTransactional.SearchOrder: iTransactional;
 begin
   Result := Self;
   ReqResHTTP(GET, FParent.Enviroment.BaseURL + EP_MO +
-              '?external_reference' + FExternalRef);
+              '?external_reference=' + FExternalRef);
 end;
 
 function TTransactional.StatusCode: Integer;

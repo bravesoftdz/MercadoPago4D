@@ -35,7 +35,7 @@ uses
 constructor TJsonDTO.Create;
 begin
   inherited;
-  FOptions := [joDateIsUTC, joDateFormatISO8601];
+  FOptions := [joIgnoreEmptyStrings, joIgnoreEmptyArrays, joDateFormatISO8601];
 end;
 
 function TJsonDTO.GetAsJson: string;

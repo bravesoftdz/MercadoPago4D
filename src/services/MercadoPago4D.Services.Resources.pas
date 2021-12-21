@@ -3,8 +3,11 @@ unit MercadoPago4D.Services.Resources;
 interface
 
 uses
-  MercadoPago4D.Core.Interfaces, MercadoPago4D.Services.Interfaces,
-  MercadoPago4D.Services.Accreditation, MercadoPago4D.Services.Transactional;
+  MercadoPago4D.Core.Interfaces,
+  MercadoPago4D.Services.Interfaces,
+  MercadoPago4D.Services.Accreditation,
+  MercadoPago4D.Services.Transactional,
+  MercadoPago4D.Services.AfterSales;
 
 type
   TResources = class(TInterfacedObject, iResources)
@@ -30,7 +33,7 @@ end;
 
 function TResources.AfterSales: iAfterSales;
 begin
-
+  Result := TAfterSales.New( FParent );
 end;
 
 constructor TResources.Create(Parent : iConfiguration);
